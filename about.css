@@ -1,0 +1,183 @@
+#navArtist span {
+    text-decoration: underline;
+}
+body#about {
+    padding-top: 70px;
+}
+body#about main {
+    position: relative;
+    height: auto;
+}
+.portrait {
+    position: relative;
+}
+img.play {
+    width: 50px;
+    position: absolute;
+    left: 8vw;
+    top: 30vw;
+    z-index: 3;
+    cursor: pointer;
+}
+.stop {
+    font-size: 30px;
+    font-family: simplifica, sans-serif;
+    position: absolute;
+    top: 5px;
+    z-index: 2;
+    right: 8vw;
+    opacity: 0;
+    cursor: pointer;
+}
+.fade-out {
+    animation: fade-out 1s .3s ease-out forwards;
+}
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+.fade-in {
+    animation: fade-in 1s .3s ease-out forwards;
+}
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+iframe {
+    width: 100vw;
+    height: 56.25vw;
+    max-width: 560px;
+    max-height: 315px;
+    position: absolute;
+    top: 9vw;
+    border: none;
+    opacity: 0;
+    pointer-events: none;
+}
+.show {
+    animation: show .3s 1s ease-in forwards;
+}
+@keyframes show {
+    to {
+        opacity: 1;
+    }
+}
+.caption, div.address, div.email {
+    padding-left: 8vw;
+}
+p.address, p.email {
+    margin-left: 10px;
+}
+.caption h3 {
+    font-size: 17px;
+}
+.caption p {
+    font-size: 11px;
+    color: var(--medium-grey);
+}
+.bio {
+    padding: 40px 8vw;
+}
+.bio p {
+    margin-bottom: 2em;
+}
+h1.name {
+    font-size: 9vw;
+    position: absolute;
+    top: 18vw;
+    left: 8vw;
+    font-weight: 100;
+}
+.address img {
+    width: 18px;
+    opacity: .8;
+}
+.email img {
+    width: 17px;
+}
+.address p, .email p {
+    display: inline-block;
+}
+.portrait img:not(.play) {
+    width: 100%;
+}
+
+/* for the video*/
+@media screen and (min-width: 560px){
+    iframe {
+        width: 560px;
+        height: 315px;
+        position: absolute;
+        top: 9vw;
+        left: calc(50vw - 280px);
+        border: none;
+    }
+    .stop {
+        top: 25px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    iframe {
+        width: 80vw;
+        height: 45vw;
+        margin-left: 0;
+    }
+    .bio {
+        width: 76%;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    body#about main {
+        padding: 6vw 6vw 0 6vw;
+    }
+    h1.name {
+        font-size: 53px;
+        left: 10vw;
+        top: 12vw;
+    }
+    .portrait {
+        width: 48vw;
+        height: 36vw;
+        overflow-y: visible;
+        position: relative;
+    }
+    .caption {
+        padding-left: 0;
+    }
+    img.play {
+        width: 50px;
+        position: absolute;
+        left: 4vw;
+        top: 13vw;
+    }
+    .stop {
+        right: 0;
+        top: 0;
+    }
+    iframe {
+        position: absolute;
+        top: 36px;
+        left: calc(26vw - 280px);
+    }
+    .bio {
+        width: 35vw;
+        position: absolute;
+        top: 0;
+        right: 7vw;
+        padding: 6vw 0 0 0;
+    }
+    div.address, div.email {
+        margin-left: 4vw;
+        padding-left: 0;
+        position: relative;
+        top: -17vw;
+    }
+    body#about footer {
+        position: absolute;
+        bottom: -200px;
+    }
+}

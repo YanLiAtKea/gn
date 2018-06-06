@@ -1,0 +1,189 @@
+.background {
+    background: url(images/homepage-mobile.jpg) left center no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: calc(140vw + 50px);
+    position: relative;
+    top: 40px;
+    /*height: calc(180vw - 170px);  based on screen ratio and height of navi + footer */
+}
+
+.background h1 {
+    font-size: 11vw;
+    font-weight: 200;
+    position: absolute;
+    bottom: 200px;
+    left: 5%;
+}
+
+.background h2 {
+    position: absolute;
+    bottom: 160px;
+    left: 5%;
+    font-size: 6vw;
+}
+
+img.homepage {
+    display: none;
+}
+
+.heart1 {
+    position: absolute;
+    right: 3.1vw;
+    top: 70.5vw;
+    width: 15.5vw;
+    animation: heart-beat1 1.2s .04s cubic-bezier(0.79,-0.04, 0.67, 1.52) infinite;
+}
+    @keyframes heart-beat1 {
+        50% {
+            transform: scale(.85) translate(-.1vw, .2vw);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+.heart2 {
+    position: absolute;
+    right: 4.5vw;
+    top: 70vw;
+    width: 23vw;
+    max-width: 150px;
+    animation: heart-beat2 1.2s .6s cubic-bezier(0.79,-0.04, 0.67, 1.52) infinite;
+}
+    @keyframes heart-beat2 {
+        50% {
+            transform: scale(1.13, .9) translate(.2vw, .19vw) rotate(6deg);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* animation on homepage */
+    .el-dot {
+        position: absolute;
+        top: 127vw;
+        right: 44.5vw;
+        width: 4px;
+        height: 4px;
+        background-color: black;
+        border-radius: 3px;
+        animation: el-dot 1.2s ease-in infinite;
+        opacity: .2;
+    }
+    @keyframes el-dot {
+        15% {
+            transform: translate(4vw, 0vw) scale(.5);
+            opacity: .1;
+        }
+        100% {
+            transform: translate(26.9vw, -41.9vw) scale(.9);
+            opacity: .6;
+        }
+    }
+
+.captionHome {
+    position: absolute;
+    bottom: -75px;
+    left: 5%;
+}
+.captionHome p {
+    font-size: 13px;
+}
+/*
+@media screen and (min-width: 760px){
+    .heart1 {
+        right: 2vw;
+        top: 21.35vw;
+        width: 5.5vw;
+    }
+}
+*/
+@media screen and (min-width: 1024px){
+
+    /* homepage */
+    .background {
+        background: #ffffff;
+        width: 100%;
+        height: 51vw;  /* temporary solution */
+        position: relative;
+        top: 70px;
+/*        width: 95vw;
+        height: 80vh;
+        top: 10vh; */
+    }
+    img.homepage, img.heart1, img.heart2, img.el-dot {
+        display: inherit;
+    }
+    img.homepage {
+        width: 100%;
+    }
+    .background h1 {
+        font-size: 5vw; /* temporary solution */
+        top: 18vw;
+        left: 21vw;
+        text-align: left;
+    }
+    .background h2 {
+        font-size: 2vw;
+        top: 25vw;
+        left: 21vw;
+    }
+    .captionHome {
+        bottom: .5vw;
+        left: 3%;
+    }
+    div.captionHome h4 {
+        font-size: 17px;
+    }
+    .captionHome p {
+        font-size: 13px;
+        margin-top: -5px;
+        color: var(--medium-grey);
+    }
+    /* animation on homepage */
+    .el-dot {
+        position: absolute;
+        top: 39vw;
+        right: 17.5vw;
+        width: 6px;
+        height: 6px;
+        background-color: black;
+        border-radius: 3px;
+        animation: el-dot 1.2s 0s ease-in infinite;
+        opacity: .2;
+    }
+    @keyframes el-dot {
+        15% {
+            transform: translate(4vw, 1vw) scale(.5);
+            opacity: .1;
+        }
+        100% {
+            transform: translate(10.9vw, -11.9vw) scale(.9);
+            opacity: .6;
+        }
+    }
+    .heart1 {
+        right: .86vw;
+        top: 21.35vw;
+        width: 5.5vw;
+        max-width: inherit;
+    }
+    .heart2 {
+        right: 2.3vw;
+        top: 21.7vw;
+        width: 7vw;
+
+    }
+    /*
+    animation: heart-beat1 1.2s -.6s cubic-bezier(0.79,-0.04, 0.67, 1.52) infinite;
+    animation: heart-beat1 1.2s -.6s cubic-bezier(0.79,-0.04, 0.67, 1.52) infinite;
+    @keyframes heart-beat2 {
+        50% {
+            transform: scale(1.16) translate(.05vw, .35vw);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }*/
+}

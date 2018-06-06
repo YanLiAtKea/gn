@@ -1,0 +1,289 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --light-grey: #BFBFBF;
+    --medium-grey: #919191;
+    --dark-grey: #333;
+    --yellow: #eedcc0;
+    --brown: #a8977c;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+@font-face {
+    font-family: Simplifica;
+    src: url(fonts/simplifica-typeface.ttf);
+}
+
+@font-face {
+    font-family: Sukhumvit-thin;
+    src: url(fonts/SukhumvitSet-Thin.ttf);
+}
+@font-face {
+    font-family: Sukhumvit-text;
+    src: url(fonts/SukhumvitSet-Text.ttf);
+}
+@font-face {
+    font-family: Sukhumvit-Bold;
+    src: url(fonts/SukhumvitSet-Bold.ttf);
+}
+/* loader */
+.loader{
+    z-index: 5;
+    position: relative;
+    background-color: linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%);
+    width: 100vw;
+    height: 100vh;
+}
+svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+  width: 10em;
+}
+rect, polyline, path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 1.5s forwards ease-in-out infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50%{
+     stroke-dashoffset: 0;
+  }
+  99.9%{
+    stroke-dashoffset: 1000;
+  }
+  100%{
+   stroke-dashoffset: 0;
+  }
+}
+
+/* basic elements */
+body:not(#homepage) {
+    background: linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%);
+    max-width: 100%;
+    position: relative;
+    height: 100%;
+}
+a {
+    text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+a,
+button {
+    font-family: Simplifica;
+    color: black;
+    font-weight: 100;
+}
+a:not(.no-styling):hover{
+    text-decoration: underline;
+}
+a.no-styling {
+    font-family: Sukhumvit-thin, sans-serif;
+}
+h1 {
+    font-size: 63px;
+}
+h2 {
+    font-size: 29px;
+}
+h3 {
+    font-size: 23px;
+}
+h4 {
+    font-size: 19px;
+}
+p {
+    font-family: Sukhumvit-thin, sans-serif;
+    font-size: 16px;
+}
+button {
+    border: none;
+    background: transparent;
+}
+/* elements on all pages */
+header {
+    background: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 20;
+    padding: 0 5vw;
+}
+footer {
+    width: 100%;
+}
+.desktopFooter {
+    display: none;
+}
+/*navigation*/
+.burger {
+    width: 25px;
+}
+header>* {
+    position: fixed;
+}
+a#navHome {
+    right: 5vw;
+    top: 23px;
+}
+.logo {
+    width: 37px;
+    left: calc(100vw - 70px);
+
+}
+.lan {
+    z-index: 20;
+    position: fixed;
+    right: calc(5vw + 100px);
+    top: 25px;
+}
+
+.lan button {
+    font-size: 23px;
+    cursor: pointer;
+}
+.navMenu {
+    background: white;
+    padding: 26px;
+    position: relative;
+    left: -30px;
+    height: 70px;
+    width: 60vw;
+    max-width: 400px;
+    overflow: hidden;
+}
+.navMenu.expanded {
+    animation: openNav .3s forwards ease;
+}
+@keyframes openNav {
+    to {
+        height: 550px;
+    }
+}
+nav>* {
+    display: block;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+.subMenu {
+    padding: 40px;
+}
+.subMenu a {
+    display: block;
+    margin-bottom: 20px;
+}
+@keyframes drop-down {
+    to {
+        height: 300px;
+    }
+}
+.hide {
+    display: none;
+}
+.lanactive {
+    color: var(--light-grey);
+}
+/* footer */
+footer {
+    height: 70px;
+    position: absolute;
+    bottom: -130px;
+    font-family: Sukhumvit-thin, sans-serif;
+    font-size: 13px;
+}
+footer img {
+    width: 30px;
+    margin: 0 7px;
+    position: relative;
+    bottom: -11px;
+}
+footer>div {
+    width: 100vw;
+    text-align: center;
+    margin: 0 auto;
+}
+.linkedin {
+    opacity: .3;
+}
+
+@media screen and (min-width: 768px){
+    /* footer */
+    footer {
+        height: 70px;
+        width: 570px;
+        bottom: -100px;
+        margin: 0 calc(50vw - 250px);
+    }
+    .desktopFooter {
+        display: inherit;
+    }
+
+    footer>div {
+        display: inline-block;
+        width: auto;
+        text-align: left;
+        margin: 0 70px 0 0;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    header {
+        overflow: hidden;
+    }
+    .burger {
+        display: none;
+    }
+    a#navHome {
+        left: 4vw;
+        width: 100px;
+    }
+    .navMenu {
+        width: 55vw;
+        margin-left: 45vw;
+        display: grid;
+        grid-template-columns: 15ch 15ch 20ch;
+        overflow: visible;
+    }
+    .timeline {
+        position: relative;
+        top: -4px; /* text inside div, not aligned as others */
+        height: 70px;
+        overflow: visible;
+    }
+    .timeline:hover {
+        height: 300px;
+    }
+    .subMenu {
+        height: 0;
+        overflow: hidden;
+        width: 200px;
+    }
+    .subMenu.drop-down {
+        background: white;
+        position: relative;
+        left: -40px;
+        animation: drop-down .3s forwards ease;
+    }
+    .lan {
+        top: 23px;
+        right: 5vw;
+    }
+}
