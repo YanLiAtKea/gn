@@ -430,4 +430,8 @@ span.share {
         width: 100%;
 
     }
+    button.inquire {
+        margin-right: 65px;
+    }
+
 }
