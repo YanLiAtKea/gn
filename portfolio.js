@@ -1,6 +1,6 @@
 let template = document.querySelector('template').content;
-let page = 1;
-let wrapper = document.querySelector('body');
+let pageNr = 1;
+let wrapper = document.querySelector('main');
 let lookingForData = false;
 let defaultPath;
 let fetching;
@@ -20,15 +20,16 @@ function notFetching(){
 //    languagePassed = "en";
 //}
 
+
 // fetch data based on language
-defaultPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork_' + languagePassed + '?_embed&order=asc&per_page=3&page=';
+defaultPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork?_embed&order=desc&per_page=3&page=';
 
 fetchArt(defaultPath);
 
 function fetchArt(path) {
     fetching = true;
     lookingForData = true;
-    fetch(path + page).then(e => e.json()).then(showArts); // concatinate path and page to form the actual path
+    fetch(defaultPath + pageNr).then(e => e.json()).then(showArts);
 }
 
 function showArts(arts){
@@ -47,41 +48,38 @@ function showArts(arts){
         let thumNail4 = eachArt.acf.image5
         let thumNail5 = eachArt.acf.image6
         clone.querySelector('.text a').href = "subpage.html?lang=" + languagePassed + "&id=" + eachArt.id;
-        // set which h3 and Inquire/share to use
-        if(languagePassed == "en"){
-            clone.querySelector('.description .eng').classList.remove('hide');
-            clone.querySelector('.description .ita').classList.add('hide');
-            clone.querySelector('.concept .eng').classList.remove('hide');
-            clone.querySelector('.concept .ita').classList.add('hide');
-            clone.querySelector('.inquire .eng').classList.remove('hide');
-            clone.querySelector('.inquire .ita').classList.add('hide');
-            clone.querySelector('.share.eng').classList.remove('hide');
-            clone.querySelector('.share.ita').classList.add('hide');
-        } else if(languagePassed == "it"){
-            clone.querySelector('.description .ita').classList.remove('hide');
-            clone.querySelector('.description .eng').classList.add('hide');
-            clone.querySelector('.concept .ita').classList.remove('hide');
-            clone.querySelector('.concept .eng').classList.add('hide');
-            clone.querySelector('.inquire .ita').classList.remove('hide');
-            clone.querySelector('.inquire .eng').classList.add('hide');
-            clone.querySelector('.share.ita').classList.remove('hide');
-            clone.querySelector('.share.eng').classList.add('hide');
+        clone.querySelector('.title.eng').innerHTML = eachArt.acf['title_of_work_en'];
+        clone.querySelector('.title.ita').innerHTML = eachArt.acf['title_of_work_it'];
+        clone.querySelector('.year-of-creation').textContent = "(" + eachArt.acf["year_of_creation"] + ")";
+        clone.querySelector('.dimension .height').textContent = eachArt.acf['dimension_height'];
+        clone.querySelector('.dimension .width').textContent = eachArt.acf['dimension_width'];
+        clone.querySelector('.dimension .length').textContent = eachArt.acf['dimension_length'];
+        if(eachArt.acf['locaion_of_art_work_en']){
+            clone.querySelector('.location.eng').innerHTML = eachArt.acf['locaion_of_art_work_en'];
         }
-        clone.querySelector('h1.title').innerHTML = eachArt.acf.title_of_artwork;
-        clone.querySelector('.year-of-creation').textContent = "( " + eachArt.acf.year_of_work + " )"
-        clone.querySelector('.height').textContent = eachArt.acf.dimension_height;
-        clone.querySelector('.length').textContent =
-            eachArt.acf.dimension_length;
-        clone.querySelector('.width').textContent = eachArt.acf.dimension_width;
+        if(eachArt.acf['locaion_of_art_work_it']){
+            clone.querySelector('.location.ita').innerHTML = eachArt.acf['locaion_of_art_work_it'];
+        }
+        clone.querySelector('.description p.eng').innerHTML = eachArt.acf['technical_description_en'];
+        clone.querySelector('.description p.ita').innerHTML = eachArt.acf['technical_description_it'];
+        clone.querySelector('.concept p.eng').innerHTML = eachArt.acf['concept_en'];
+        clone.querySelector('.concept p.ita').innerHTML = eachArt.acf['concept_it'];
         clone.querySelector('.big-image img').src = largeImagePath;
-        clone.querySelector('.big-image img').alt = eachArt.acf.title_of_artwork;
-        clone.querySelector('.big-image img').classList.add(eachArt.acf["image-orientation"]);
+        clone.querySelector('.big-image img').alt = eachArt.acf['title_of_artwork'];
+        clone.querySelector('.big-image img').classList.add(eachArt.acf["orientation_image1"]);
+        // check to see if the large image is in horizontal or vertical format, need this to choose layout for all images
+        let largeImageOrientation = eachArt.acf["orientation_image1"];
+        if(largeImageOrientation == "horizontal"){
+            clone.querySelector('div.img').classList.add('horizontal');
+        } else {
+            clone.querySelector('div.img').classList.add('vertical');
+        }
         // image 2-6 are not required, so check if each of these exsist, great thumbnail only when exsist
         let thumbnailWrapper = clone.querySelector('.small-images');
         if(eachArt.acf.image2 !== false){
             clone.querySelector('.thumbnail:nth-of-type(1) img').src = eachArt.acf.image2.sizes.large;
             clone.querySelector('.thumbnail:nth-of-type(1) img').alt = eachArt.acf.title_of_artwork;
-            clone.querySelector('.thumbnail:nth-of-type(1) img').classList.add(eachArt.acf["image-orientation2"]);
+            clone.querySelector('.thumbnail:nth-of-type(1) img').classList.add(eachArt.acf["orientation_image2"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot1'></div>";
             clone.querySelector('.only-next').append(newDot);
@@ -89,7 +87,7 @@ function showArts(arts){
         if(eachArt.acf.image3 !== false){
             clone.querySelector('.thumbnail:nth-of-type(2) img').src = eachArt.acf.image3.sizes.large;
             clone.querySelector('.thumbnail:nth-of-type(2) img').alt = eachArt.acf.title_of_artwork;
-            clone.querySelector('.thumbnail:nth-of-type(2) img').classList.add(eachArt.acf["image-orientation3"]);
+            clone.querySelector('.thumbnail:nth-of-type(2) img').classList.add(eachArt.acf["orientation_image3"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot2'></div>";
             clone.querySelector('.only-next').append(newDot);
@@ -97,7 +95,7 @@ function showArts(arts){
         if(eachArt.acf.image4 !== false){
             clone.querySelector('.thumbnail:nth-of-type(3) img').src = eachArt.acf.image4.sizes.large;
             clone.querySelector('.thumbnail:nth-of-type(3) img').alt = eachArt.acf.title_of_artwork;
-            clone.querySelector('.thumbnail:nth-of-type(3) img').classList.add(eachArt.acf["image-orientation4"]);
+            clone.querySelector('.thumbnail:nth-of-type(3) img').classList.add(eachArt.acf["orientation_image4"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot3'></div>";
             clone.querySelector('.only-next').append(newDot);
@@ -105,7 +103,7 @@ function showArts(arts){
         if(eachArt.acf.image5 !== false){
             clone.querySelector('.thumbnail:nth-of-type(4) img').src = eachArt.acf.image5.sizes.large;
             clone.querySelector('.thumbnail:nth-of-type(4) img').alt = eachArt.acf.title_of_artwork;
-            clone.querySelector('.thumbnail:nth-of-type(4) img').classList.add(eachArt.acf["image-orientation5"]);
+            clone.querySelector('.thumbnail:nth-of-type(4) img').classList.add(eachArt.acf["orientation_image5"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot4'></div>";
             clone.querySelector('.only-next').append(newDot);
@@ -113,24 +111,28 @@ function showArts(arts){
         if(eachArt.acf.image6 !== false){
             clone.querySelector('.thumbnail:nth-of-type(5) img').src = eachArt.acf.image6.sizes.large;
             clone.querySelector('.thumbnail:nth-of-type(5) img').alt = eachArt.acf.title_of_artwork;
-            clone.querySelector('.thumbnail:nth-of-type(5) img').classList.add(eachArt.acf["image-orientation6"]);
+            clone.querySelector('.thumbnail:nth-of-type(5) img').classList.add(eachArt.acf["orientation_image6"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot5'></div>";
             clone.querySelector('.only-next').append(newDot);
         }
-        clone.querySelector('.description p').textContent = eachArt.acf.technical_description;
-        clone.querySelector('.concept p').innerHTML = eachArt.acf.concept;
-        // check to see if the large image is in horizontal or vertical format, need this to choose layout for all images
-        let largeImageOrientation = eachArt.acf["image-orientation"];
-        if(largeImageOrientation == "horizontal"){
-            clone.querySelector('div.img').classList.add('horizontal');
-        } else {
-            clone.querySelector('div.img').classList.add('vertical');
-        }
-
         wrapper.appendChild(clone);
 
-    // clicked dot turns black
+        // only display the passed language
+        if(languagePassed == "en"){
+            showEng();
+        } else if(languagePassed == "it"){
+            showIta();
+        }
+        function showEng(){
+            document.querySelectorAll('.ita').forEach(function(i){i.classList.add('hide')});
+            document.querySelectorAll('.eng').forEach(function(i){i.classList.remove('hide')});
+        };
+        function showIta(){
+            document.querySelectorAll('.eng').forEach(function(i){i.classList.add('hide')}); document.querySelectorAll('.ita').forEach(function(i){i.classList.remove('hide')});
+        };
+
+        // clicked dot turns black
         let allDots = document.querySelectorAll('.slide-dot');
         allDots.forEach(click);
         function click(a){
@@ -142,60 +144,60 @@ function showArts(arts){
             }
         }
 
-    // treat the black dots, which is linked to the first image
-    let blackDots = document.querySelectorAll('.slidedot0');
-    blackDots.forEach(getLargeImgSrc);
-    function getLargeImgSrc(b){
-        // get the original src of the large image, so that clicking on the black dot can always come back to the original image
-        let originalSrc = b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').getAttribute('src');
-        let originalOrientation = b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className;
-        b.addEventListener('click', setSrcAndOri);
-        function setSrcAndOri(){
-            b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').setAttribute('src', originalSrc);
-            b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className = originalOrientation;
-        }
-    }
-
-    // update image src when click "new dot"
-    let allNewDots = document.querySelectorAll('.slide-dot-new.slide-dot');
-    let srcArray2 = [];
-    let orientationArray = [];
-    allNewDots.forEach(clickDot);
-    function clickDot(d){
-        // listen to click on each dot
-        d.addEventListener('click',updateSrc);
-        function updateSrc(){
-            let indexOfDot = d.className.slice(-1); // get the last digit, class was dynamicly added to each dot, so the last digit is controled as needed
-            let allImgs = d.parentElement.parentElement.parentElement.previousElementSibling.querySelectorAll('img');
-
-            if(allImgs[indexOfDot].getAttribute('src')){
-                srcArray2 = [];
-                orientationArray = [];
-                allImgs.forEach(pushSrc);
-                function pushSrc(img){
-                    srcArray2.push(img.getAttribute('src'));
-                    orientationArray.push(img.className);
-                }
+        // treat the black dots, which is linked to the first image
+        let blackDots = document.querySelectorAll('.slidedot0');
+        blackDots.forEach(getLargeImgSrc);
+        function getLargeImgSrc(b){
+            // get the original src of the large image, so that clicking on the black dot can always come back to the original image
+            let originalSrc = b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').getAttribute('src');
+            let originalOrientation = b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className;
+            b.addEventListener('click', setSrcAndOri);
+            function setSrcAndOri(){
+                b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').setAttribute('src', originalSrc);
+                b.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className = originalOrientation;
             }
-            d.parentElement.parentElement.parentElement.previousElementSibling.className = "img " + orientationArray[indexOfDot];
-            d.parentElement.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className = orientationArray[indexOfDot];
-            let newSrc = srcArray2[indexOfDot];
-            d.parentElement.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').setAttribute('src', newSrc);
         }
-    }})
+
+        // update image src when click "new dot"
+        let allNewDots = document.querySelectorAll('.slide-dot-new.slide-dot');
+        let srcArray2 = [];
+        let orientationArray = [];
+        allNewDots.forEach(clickDot);
+        function clickDot(d){
+            // listen to click on each dot
+            d.addEventListener('click',updateSrc);
+            function updateSrc(){
+                let indexOfDot = d.className.slice(-1); // get the last digit, class was dynamicly added to each dot, so the last digit is controled as needed
+                let allImgs = d.parentElement.parentElement.parentElement.previousElementSibling.querySelectorAll('img');
+
+                if(allImgs[indexOfDot].getAttribute('src')){
+                    srcArray2 = [];
+                    orientationArray = [];
+                    allImgs.forEach(pushSrc);
+                    function pushSrc(img){
+                        srcArray2.push(img.getAttribute('src'));
+                        orientationArray.push(img.className);
+                    }
+                }
+                d.parentElement.parentElement.parentElement.previousElementSibling.className = "img " + orientationArray[indexOfDot];
+                d.parentElement.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').className = orientationArray[indexOfDot];
+                let newSrc = srcArray2[indexOfDot];
+                d.parentElement.parentElement.parentElement.previousElementSibling.querySelector('.big-image img').setAttribute('src', newSrc);
+            }
+        }
+    })
 
     // click on inquire button
     document.querySelectorAll('button.inquire').forEach(function(c){c.addEventListener('click', showForm)})
     function showForm(){
         document.querySelector('.inquire-form').className = "inquire-form show";
-
     }
     // click on X to close box in modal
     document.querySelector('.inquire-form .closeMe').addEventListener('click', closeForm);
     function closeForm(){
         document.querySelector('.inquire-form').className = "inquire-form hide";
     }
-    // click on any image/video
+    // click on any image/video to open modal
     let allImg = document.querySelectorAll('div.img img');
     document.querySelectorAll('div.img img').forEach(function(img){
         img.addEventListener('click', openModal);})
@@ -261,10 +263,9 @@ function showArts(arts){
 
 function loadMore() {
     if (bottomVisible() && lookingForData === false) {
-        page++;
+        pageNr++;
         // update path again, cuz clicking on a languange button can also trigger language change
-        defaultPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork_' + languagePassed + '?_embed&order=asc&per_page=3&page=';
-        fetchArt(defaultPath);
+        fetchArt(defaultPath + pageNr); //concatenate path
     }
 }
 
@@ -277,25 +278,4 @@ function bottomVisible() {
     const pageHeight = document.documentElement.scrollHeight;
     const bottomOfPage = visible + scrollY >= pageHeight
     return bottomOfPage || pageHeight < visible;
-}
-
-
-// click on language button and re-fetch content in that language
-document.querySelector('.enSet').addEventListener('click', changeToEn);
-document.querySelector('.itSet').addEventListener('click', changeToIt);
-function changeToEn(){
-    document.querySelector('body').style.height = "100vh"; // in order to avoid multiple gradient
-    languagePassed = "en";
-    // remove exsisting section from previous fetch
-    document.querySelectorAll('section').forEach(function(a){a.remove()});
-    let path = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork_en?_embed&order=asc&per_page=3&page=';
-    fetchArt(path);
-}
-function changeToIt(){
-    document.querySelector('body').style.height = "100vh"; // in order to avoid multiple gradient
-    languagePassed = "it";
-    // remove exsisting section from previous fetch
-    document.querySelectorAll('section').forEach(function(a){a.remove()});
-    let path = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork_it?_embed&order=asc&per_page=3&page=';
-    fetchArt(path);
 }

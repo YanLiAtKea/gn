@@ -21,17 +21,19 @@ function pullUp(){
 // switch hard-code part between en and it with lang buttons
 let enButton = document.querySelector('.enSet');
 let itButton = document.querySelector('.itSet');
-let allIta = document.querySelectorAll('.ita');
-let allEng = document.querySelectorAll('.eng');
 enButton.addEventListener('click', showEn);
 itButton.addEventListener('click', showIt);
 function showEn(){
+    let allIta = document.querySelectorAll('.ita');
+    let allEng = document.querySelectorAll('.eng');
     enButton.className = 'enSet lanactive';
     itButton.className = 'itSet';
     allIta.forEach(function(it){it.className = 'ita hide'});
     allEng.forEach(function(it){it.className = 'eng'});
 }
 function showIt(){
+    let allIta = document.querySelectorAll('.ita');
+    let allEng = document.querySelectorAll('.eng');
     itButton.className = 'itSet lanactive';
     enButton.className = 'enSet';
     allIta.forEach(function(it){it.className = 'ita'});
