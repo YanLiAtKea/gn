@@ -158,7 +158,7 @@ span.share {
     }
     /* form */
     .inquire-form {
-        background: white;
+        background: rgba(255,255,255,.95);
         z-index: 30;
         width: 86vw;
         height: auto;
@@ -233,7 +233,7 @@ span.share {
 
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1280px){
     .only-next {
         display: none;
     }
@@ -255,12 +255,12 @@ span.share {
         max-height: 50vw;
     }
     :root {
-        --unit: 2vw;
+        --unit: 1.8vw;
     }
     body#portfolio section {
         margin-bottom: 30px;
         width: auto;
-        padding-left: calc(3 * var(--unit));
+        padding-left: calc(5.5 * var(--unit));
         grid-template-columns: calc(24* var(--unit)) calc(17 * var(--unit));
         grid-template-rows: minmax(calc(18* var(--unit)), 45vw) calc(3* var(--unit)) calc(3* var(--unit));
         grid-column-gap: calc(2 * var(--unit));
@@ -362,7 +362,9 @@ span.share {
     }
     .curve img {
         width: 13%;
-        margin-left: 62.5%;
+        margin-left: 22%;
+        position: relative;
+        top: calc(-5 * var(--unit));
     }
     .more {
         display: none;
