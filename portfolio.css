@@ -234,6 +234,12 @@ span.share {
 }
 
 @media screen and (min-width: 1280px){
+    body#portfolio {
+        padding-top: 70px;
+    }
+    main {
+        padding-top: 3vw;
+    }
     .only-next {
         display: none;
     }
@@ -346,7 +352,7 @@ span.share {
     }
     .buttons {
         position: absolute;
-        bottom: -55px;
+        bottom: -35px;
     }
     .title {
         grid-row: 1/4;
@@ -365,7 +371,7 @@ span.share {
         width: 13%;
         margin-left: 22%;
         position: relative;
-        top: calc(-5 * var(--unit));
+        top: calc(-5.5 * var(--unit));
     }
     .more {
         display: none;

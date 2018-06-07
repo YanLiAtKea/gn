@@ -137,7 +137,7 @@ h1.name {
 
 @media screen and (min-width: 1200px){
     body#about main {
-        padding: 6vw 6vw 0 6vw;
+        padding: 3vw 6vw 0 6vw;
     }
     h1.name {
         font-size: 53px;
@@ -173,7 +173,7 @@ h1.name {
         position: absolute;
         top: 0;
         right: 7vw;
-        padding: 6vw 0 0 0;
+        padding: 3vw 0 0 0;
     }
     div.address, div.email {
         margin-left: 0;
