@@ -48,6 +48,7 @@ if(!languagePassed || languagePassed == 'en'){
     languagePassed = "en";
     showEn();
 } else if (languagePassed && languagePassed == "it"){
+    languagePassed = "it";
     showIt();
 }
 

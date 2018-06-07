@@ -67,8 +67,13 @@ iframe {
 .caption, div.address, div.email {
     padding-left: 8vw;
 }
-p.address, p.email {
-    margin-left: 10px;
+div.address {
+    height: 30px;
+}
+div.address .eng, div.address .ita, p.email {
+    margin-left: 30px;
+    position: relative;
+    top: -26px;
 }
 .caption h3 {
     font-size: 17px;
@@ -96,9 +101,6 @@ h1.name {
 }
 .email img {
     width: 17px;
-}
-.address p, .email p {
-    display: inline-block;
 }
 .portrait img:not(.play) {
     width: 100%;
@@ -130,13 +132,13 @@ h1.name {
     }
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1280px){
     body#about main {
         padding: 6vw 6vw 0 6vw;
     }
     h1.name {
         font-size: 53px;
-        left: 10vw;
+        left: 14vw;
         top: 12vw;
     }
     .portrait {
@@ -171,10 +173,10 @@ h1.name {
         padding: 6vw 0 0 0;
     }
     div.address, div.email {
-        margin-left: 4vw;
+        margin-left: 52vw;
         padding-left: 0;
         position: relative;
-        top: -17vw;
+        top: 70px;
     }
     body#about footer {
         position: absolute;
