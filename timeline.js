@@ -20,68 +20,39 @@ let pressPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/press?_embed&per_pa
 // get the language setting in the URL
 //let Urlpassed = new URLSearchParams(window.location.search);
 //let languagePassed = Urlpassed.get("lang");
-/*
+
 // get type passed in the URL
 let typePassed = Urlpassed.get("type");
-if(typePassed == "experience" && languagePassed == 'en'){
-    fetchTimeline(expPathEn, showExp);
-    fetchTimeline(exhiPathEn, showExhi)
-    fetchTimeline(pressPathEn, showPress);
-    showUnderlingExp();
-    showOnlyExp();
-    setTimeout(filterOnlyExp, 2000);
-}
-if(typePassed == "experience" && languagePassed == "it"){
-    fetchTimeline(expPathIt, showExp);
-    fetchTimeline(exhiPathIt, showExhi)
-    fetchTimeline(pressPathIt, showPress);
-    showUnderlingExp();
-    showOnlyExp();
-    setTimeout(filterOnlyExp, 2000);
-}
-if(typePassed == "exhibition" && languagePassed == "en"){
-    fetchTimeline(expPathEn, showExp);
-    fetchTimeline(exhiPathEn, showExhi)
-    fetchTimeline(pressPathEn, showPress);
-    showOnlyExh();
-    setTimeout(filterOnlyExhi, 2000);
-}
-if(typePassed == "exhibition" && languagePassed == "it"){
-    fetchTimeline(expPathIt, showExp);
-    fetchTimeline(exhiPathIt, showExhi)
-    fetchTimeline(pressPathIt, showPress);
-    showOnlyExp();
-    showUnderlingExhi();
-    setTimeout(filterOnlyExhi, 2000);
-}
-if(typePassed == "press" && languagePassed == "en"){
-    fetchTimeline(expPathEn, showExp);
-    fetchTimeline(exhiPathEn, showExhi)
-    fetchTimeline(pressPathEn, showPress);
-    showOnlyPress();
-    showUnderlingPress();
-    setTimeout(filterOnlyPress, 2000);
-}
-if(typePassed == "press" && languagePassed == "it"){
-    fetchTimeline(expPathIt, showExp);
-    fetchTimeline(exhiPathIt, showExhi)
-    fetchTimeline(pressPathIt, showPress);
-    showOnlyPress();
-    showUnderlingPress();
-    setTimeout(filterOnlyPress, 2000);
-}
-if(!typePassed && languagePassed == "en"){
-    fetchTimeline(exhiPath, showExp);
+if(typePassed == "experience"){
+    fetchTimeline(expPath, showExp);
     fetchTimeline(exhiPath, showExhi);
     fetchTimeline(pressPath, showPress);
+    showUnderlineExp();
+    setTimeout(filterOnlyExp, 2000);
+    setTimeout(newSort, 2001);
 }
-if(!typePassed && languagePassed == "it"){
-    fetchTimeline(exhiPath, showExp);
+if(typePassed == "exhibition"){
+    fetchTimeline(expPath, showExp);
+    fetchTimeline(exhiPath, showExhi);
+    fetchTimeline(pressPath, showPress);
+    showUnderlineExhi();
+    setTimeout(filterOnlyExhi, 2000);
+    setTimeout(newSort, 2001);
+}
+if(typePassed == "press"){
+    fetchTimeline(expPath, showExp);
+    fetchTimeline(exhiPath, showExhi);
+    fetchTimeline(pressPath, showPress);
+    showUnderlinePress();
+    setTimeout(filterOnlyPress, 2000);
+    setTimeout(newSort, 2001);
+}
+if(!typePassed){
+    fetchTimeline(expPath, showExp);
     fetchTimeline(exhiPath, showExhi);
     fetchTimeline(pressPath, showPress);
 }
 
-*/
 
 // get today
 var today = new Date();
@@ -95,10 +66,11 @@ if(mm<10){
 }
 var yyyy = today.getFullYear();
 today = yyyy.toString() + mm.toString() + dd.toString();
-
+/*
 fetchTimeline(expPath, showExp);
 fetchTimeline(exhiPath, showExhi);
 fetchTimeline(pressPath, showPress);
+*/
 function fetchTimeline(path, show) {
     fetching = true;
     fetch(path).then(e => e.json()).then(show);
@@ -226,17 +198,17 @@ function preFilter(){
 // filter event types by clicking
 document.querySelector('.expFilter').addEventListener('click', showOnlyExp);
 function showOnlyExp(){
-    showUnderlingExp();
+    showUnderlineExp();
     filterOnlyExp();
 }
 document.querySelector('.exhiFilter').addEventListener('click', showOnlyExh);
 function showOnlyExh(){
-    showUnderlingExhi();
+    showUnderlineExhi();
     filterOnlyExhi();
 }
 document.querySelector('.pressFilter').addEventListener('click', showOnlyPress);
 function showOnlyPress(){
-    showUnderlingPress();
+    showUnderlinePress();
     filterOnlyPress();
 }
 document.querySelector('.allFilter').addEventListener('click', showAll);
@@ -314,7 +286,7 @@ function newSort(){
     document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
 
 }
-function showUnderlingExp(){
+function showUnderlineExp(){
     document.querySelector('.allFilter').classList.remove('active');
     document.querySelector('.exhiFilter').classList.remove('active');
     document.querySelector('.pressFilter').classList.remove('active');
@@ -327,7 +299,7 @@ function filterOnlyExp(){
     newSort();
 }
 
-function showUnderlingExhi(){
+function showUnderlineExhi(){
     document.querySelector('.allFilter').classList.remove('active');
     document.querySelector('.expFilter').classList.remove('active');
     document.querySelector('.pressFilter').classList.remove('active');
@@ -340,7 +312,7 @@ function filterOnlyExhi(){
     newSort();
 }
 
-function showUnderlingPress(){
+function showUnderlinePress(){
     document.querySelector('.allFilter').classList.remove('active');
     document.querySelector('.exhiFilter').classList.remove('active');
     document.querySelector('.expFilter').classList.remove('active');
