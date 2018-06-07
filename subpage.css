@@ -122,9 +122,62 @@ section.subPageS, #subpage aside {
     margin-bottom: 50px;
     font-family: Sukhumvit-bold, sans-serif;
 }
-
-@media screen and (min-width: 760px){
+.centerMe img {
+    width: 190px;
+}
+.modal {
+    margin-top: 30px;
+}
+@media screen and (min-width: 768px){
+    .fetched {
+        width: 60%;
+        position: relative;
+    }
+    .fetched>div.buttons {
+    }
     #subpage .inquire {
+        display: inline;
+        width: 170px;
+        border: 1px solid var(--medium-grey);
+        border-radius: 2px;
+        font-size: 23px;
+        line-height: 50px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .SoMeIcon {
+        position: relative;
+        top: 19px;
+    }
+    .gallery img {
+        width: 100%;
+        margin: 20px 0;
+    }
+    .centerMe {
+        margin: 0;
+    }
+    .centerMe img {
+        width: 40%;
+        margin-left: 55%;
+    }
+    #subpage aside.modal {
+        background: white;
+        padding: 10vw;
+        height: auto;
+        display: none;
+        position: fixed;
+        top: 150px;
+    }
+    #subpage div.closeMe {
+        font-family: simplifica, sans-serif;
+        font-size: 50px;
         display: inherit;
+        position: absolute;
+        right: 10vw;
+        top: 5vw;
+    }
+    .quote, .personalMex {
+        width: 67%;
     }
 }
+

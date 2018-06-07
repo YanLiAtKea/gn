@@ -127,3 +127,7 @@ function showOnlyIt(){
     document.querySelectorAll('.ita').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.eng').forEach(e => e.classList.add('hide'));
 }
+
+// open / close modal
+document.querySelector('.inquire').addEventListener('click', function(){document.querySelector('.modal').style.display = "inherit"});
+document.querySelector('.closeMe').addEventListener('click', function(){document.querySelector('.modal').style.display = "none"});
