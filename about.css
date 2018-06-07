@@ -6,7 +6,7 @@ body#about {
 }
 body#about main {
     position: relative;
-    height: auto;
+    height: 100%;
 }
 .portrait {
     position: relative;
@@ -64,8 +64,11 @@ iframe {
         opacity: 1;
     }
 }
-.caption, div.address, div.email {
+.caption {
     padding-left: 8vw;
+}
+div.address, div.email {
+    padding-left: 0;
 }
 div.address {
     height: 30px;
@@ -132,7 +135,7 @@ h1.name {
     }
 }
 
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1200px){
     body#about main {
         padding: 6vw 6vw 0 6vw;
     }
@@ -173,13 +176,11 @@ h1.name {
         padding: 6vw 0 0 0;
     }
     div.address, div.email {
-        margin-left: 52vw;
+        margin-left: 0;
         padding-left: 0;
-        position: relative;
-        top: 70px;
     }
     body#about footer {
         position: absolute;
-        bottom: -200px;
+        bottom: -230px;
     }
 }
