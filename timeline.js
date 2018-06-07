@@ -16,7 +16,6 @@ let main = document.querySelector('main');
 let expPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/experience?_embed&per_page=50'; // per page is now set to 50, need to be more than the actual post number, so remember to change this when there're more events added to the backend
 let exhiPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/exhibition?_embed&per_page=50';
 let pressPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/press?_embed&per_page=50';
-let counter = 0
 
 // get the language setting in the URL
 //let Urlpassed = new URLSearchParams(window.location.search);
@@ -99,28 +98,16 @@ today = yyyy.toString() + mm.toString() + dd.toString();
 
 fetchTimeline(expPath, showExp);
 fetchTimeline(exhiPath, showExhi);
-//fetchTimeline(pressPath, showPress);
+fetchTimeline(pressPath, showPress);
 function fetchTimeline(path, show) {
     fetching = true;
     fetch(path).then(e => e.json()).then(show);
 }
 
-// only show the passed language
-function preFilter(){
-    if(languagePassed == "it"){
-        document.querySelectorAll('.eng').forEach(function(i){i.classList.add('hide')});
-        document.querySelectorAll('.ita').forEach(function(i){i.classList.remove('hide')})
-    }
-    if(languagePassed == "en"){
-        document.querySelectorAll('.eng').forEach(function(i){i.classList.remove('hide')});
-        document.querySelectorAll('.ita').forEach(function(i){i.classList.add('hide')})
-    }
-}
-
+// show the 3 types after fetching
 function showExp(exp) {
     exp.forEach((e) => {
         let clone = templateExp.cloneNode(true);
-        clone.querySelector('article').classList.add('experience');
         clone.querySelector('article').classList.add('needSort');
         clone.querySelector('article').classList.add('experience');
         clone.querySelector('article').setAttribute('date-string', e.acf['start_date']);
@@ -206,39 +193,37 @@ function showExhi(exhi) {
 
 function showPress(press) {
     press.forEach((e) => {
-
         let clone = templatePress.cloneNode(true);
-        counter++
-        function isOdd(num) {
-            return num % 2;
-        }
-        if (isOdd(counter)) {
-            clone.querySelector('article').classList.add('needSort')
-
-        } else {
-            clone.querySelector('article').classList.add('needSort')
-        }
         clone.querySelector('article').classList.add('press');
-        clone.querySelector('article').setAttribute('date-string', e.acf.time_of_publication);
-        let publicationDate = e.acf.time_of_publication.substring(6, 8) + " / " + e.acf.time_of_publication.substring(4, 6) + " / " + e.acf.time_of_publication.substring(0, 4)
-
-
+        clone.querySelector('article').classList.add('needSort');
+        clone.querySelector('article').setAttribute('date-string', e.acf['time_of_press']);
+        let publicationDate = e.acf['time_of_press'].substring(6, 8) + " / " + e.acf['time_of_press'].substring(4, 6) + " / " + e.acf['time_of_press'].substring(0, 4)
         clone.querySelector('.date').textContent = publicationDate
-
-        clone.querySelector('.title').innerHTML = e.acf.name_of_press
-        clone.querySelector('.titleArticle').innerHTML = e.acf.title_of_article
-
-        if (e.link_of_exhibition == undefined) {
-            clone.querySelector('.linkIcon').classList.add('hide')
+        clone.querySelector('.title').innerHTML = e.acf.name_of_press;
+        clone.querySelector('.titleArticle').innerHTML = e.acf.title_of_press;
+        if (!e.acf['link_to_press']) {
+            clone.querySelector('a.link').classList.add('hide')
         } else {
-            clone.querySelector('.link').innerHTML = e.link_of_exhibition;
-            clone.querySelector('.linkIcon').classList.remove('hide');
+            clone.querySelector('a.link').setAttribute('href', e.acf['link_to_press']);
+            clone.querySelector('a.link').classList.remove('hide');
         }
         main.appendChild(clone);
     })
 }
 
-// event type filters
+// only show the passed language
+function preFilter(){
+    if(languagePassed == "it"){
+        document.querySelectorAll('.eng').forEach(function(i){i.classList.add('hide')});
+        document.querySelectorAll('.ita').forEach(function(i){i.classList.remove('hide')})
+    }
+    if(languagePassed == "en"){
+        document.querySelectorAll('.eng').forEach(function(i){i.classList.remove('hide')});
+        document.querySelectorAll('.ita').forEach(function(i){i.classList.add('hide')})
+    }
+}
+
+// filter event types by clicking
 document.querySelector('.expFilter').addEventListener('click', showOnlyExp);
 function showOnlyExp(){
     showUnderlingExp();
@@ -329,10 +314,6 @@ function newSort(){
     document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
 
 }
-
-
-
-
 function showUnderlingExp(){
     document.querySelector('.allFilter').classList.remove('active');
     document.querySelector('.exhiFilter').classList.remove('active');
