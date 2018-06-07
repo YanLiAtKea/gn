@@ -102,7 +102,7 @@ function showExp(exp) {
         clone.querySelector('.collaborators.ita').innerHTML = e.acf.what_did_you_do_it;
         if(e.acf['link_to_the_experience']){
             clone.querySelector('a.link').classList.remove('hide');
-            clone.querySelector('a.link').setAttribute('href', e.acf['link_to_the_experience'])
+            clone.querySelector('a.link').setAttribute('href', "http://" + e.acf['link_to_the_experience'])
         }
         main.appendChild(clone);
         preFilter();
@@ -136,7 +136,7 @@ function showExhi(exhi) {
         if (!e.acf['link_to_exhibition']) {
             clone.querySelector('a.link').classList.add('hide')
         } else {
-            clone.querySelector('a.link').setAttribute('href', e.acf['link_to_exhibition']);
+            clone.querySelector('a.link').setAttribute('href', "http://"+e.acf['link_to_exhibition']);
             clone.querySelector('a.link').classList.remove('hide');
         }
         if(e.acf['which_piece_is_shown']){
@@ -176,7 +176,7 @@ function showPress(press) {
         if (!e.acf['link_to_press']) {
             clone.querySelector('a.link').classList.add('hide')
         } else {
-            clone.querySelector('a.link').setAttribute('href', e.acf['link_to_press']);
+            clone.querySelector('a.link').setAttribute('href', "http://" + e.acf['link_to_press']);
             clone.querySelector('a.link').classList.remove('hide');
         }
         main.appendChild(clone);
