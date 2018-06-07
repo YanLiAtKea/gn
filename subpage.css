@@ -128,6 +128,10 @@ section.subPageS, #subpage aside {
 .modal {
     margin-top: 30px;
 }
+#subpage .lan {
+    top: 25px;
+    font-size: 23px;
+}
 @media screen and (min-width: 768px){
     .fetched {
         width: 66%;
