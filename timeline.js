@@ -205,16 +205,19 @@ document.querySelector('.expFilter').addEventListener('click', showOnlyExp);
 function showOnlyExp(){
     showUnderlineExp();
     filterOnlyExp();
+    window.scrollTo(top);
 }
 document.querySelector('.exhiFilter').addEventListener('click', showOnlyExh);
 function showOnlyExh(){
     showUnderlineExhi();
     filterOnlyExhi();
+    window.scrollTo(top);
 }
 document.querySelector('.pressFilter').addEventListener('click', showOnlyPress);
 function showOnlyPress(){
     showUnderlinePress();
     filterOnlyPress();
+    window.scrollTo(top);
 }
 document.querySelector('.allFilter').addEventListener('click', showAll);
 function showAll(){
@@ -226,6 +229,7 @@ function showAll(){
     document.querySelectorAll('.exhibition').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.experience').forEach(e => e.classList.remove('hide'));
     newSort();
+    window.scrollTo(top);
 }
 
 
