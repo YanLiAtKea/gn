@@ -1,5 +1,5 @@
-let fetching;
 /*
+let fetching;
 function notFetching(){
     fetching = false;
     //loader
@@ -9,13 +9,18 @@ function notFetching(){
     }
 }
 */
+
+// restrict click on filter before fetching is complete, release when sort is finished
+let filters = document.querySelectorAll('.menu>div');
+filters.forEach(e => e.style.pointerEvents = "none");
+
 let templateExp = document.querySelector('template.experiences').content;
 let templateExhi = document.querySelector('template.exhibition').content;
 let templatePress = document.querySelector('template.press').content;
 let main = document.querySelector('main');
 let expPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/experience?_embed&per_page=50'; // per page is now set to 50, need to be more than the actual post number, so remember to change this when there're more events added to the backend
-let exhiPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/exhibition?_embed&per_page=50';
-let pressPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/press?_embed&per_page=50';
+let exhiPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/exhibition?_embed&per_page=50'; // same as above
+let pressPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/press?_embed&per_page=50'; // same as above
 
 // get the language setting in the URL
 //let Urlpassed = new URLSearchParams(window.location.search);
@@ -72,7 +77,7 @@ fetchTimeline(exhiPath, showExhi);
 fetchTimeline(pressPath, showPress);
 */
 function fetchTimeline(path, show) {
-    fetching = true;
+//    fetching = true;
     fetch(path).then(e => e.json()).then(show);
 }
 
@@ -248,9 +253,11 @@ function sortAll(){
 ///////////////
     document.querySelector('body').style.height = "auto";
     document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
+    // after sorting, allow click on filters again
+    filters.forEach(e => e.style.pointerEvents = "auto");
 
 }
-setTimeout(sortAll, 2000);
+setTimeout(sortAll, 2000); // temp solution, should check state of fetching
 
 // update sort
 function newSort(){
