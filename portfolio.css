@@ -233,7 +233,7 @@ span.share {
 
 }
 
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1200px){
     body#portfolio {
         padding-top: 70px;
     }
@@ -254,6 +254,8 @@ span.share {
     }
     .concept {
         margin-top: 15px;
+        height: 20vw;
+        overflow: scroll;
     }
     div.text {
         padding: 0;
@@ -265,7 +267,7 @@ span.share {
         --unit: 1.8vw;
     }
     body#portfolio section {
-        margin-bottom: 30px;
+        margin: 0;
         width: auto;
         padding-left: calc(5.5 * var(--unit));
         grid-template-columns: calc(24* var(--unit)) calc(17 * var(--unit));
@@ -351,8 +353,8 @@ span.share {
         margin-bottom: 20px;
     }
     .buttons {
-        position: absolute;
-        bottom: -85px;
+        position: relative;
+        bottom: 0;
     }
     .title {
         grid-row: 1/4;
@@ -369,9 +371,9 @@ span.share {
     }
     .curve img {
         width: 13%;
-        margin-left: 22%;
+        margin-left: 43%;
         position: relative;
-        top: calc(-3 * var(--unit));
+        top: calc(-4.5 * var(--unit));
     }
     .more {
         display: none;
@@ -438,7 +440,7 @@ span.share {
 
     }
     button.inquire {
-        margin-right: 65px;
+        margin-right: 55px;
     }
 
 }
