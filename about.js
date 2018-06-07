@@ -29,7 +29,6 @@ function fetchInfo(path, fn) {
 
 function fillInfo(info){
     document.querySelector('body').style.height = "auto";
-    document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
     notFetching();
 
     info.forEach((i)=>{

@@ -255,8 +255,9 @@ function sortAll(){
     let sortedOdd = document.querySelectorAll('.needSort:nth-of-type(2n+1)');
     sortedOdd.forEach(e => e.classList.add('left'));
 ///////////////
+    document.querySelector('main.timeline').style.height = "auto";
     document.querySelector('body').style.height = "auto";
-    document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
+//    document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
     // after sorting, allow click on filters again
     filters.forEach(e => e.style.pointerEvents = "auto");
 
