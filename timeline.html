@@ -21,7 +21,6 @@
       .cls-1, .cls-2 {
         fill: none;
       }
-
       .cls-2 {
         stroke: #4d4d4d;
         stroke-width: 4px;
@@ -81,22 +80,36 @@
     </main>
 
     <template class="experiences">
-     <article>
+         <article>
             <div class="greyDot dot"></div>
-            <h4 class="date"><span class="startDate"></span> - <span class="endDate"></span><span class="now hide">Now</span></h4>
-            <h2 class="job"></h2>
-            <h3 class="collaborators"></h3>
-            <p class="description"></p>
+            <h4 class="date">
+                <span class="startDate"></span> - <span class="endDate"></span>
+                <span class="now hide">Now</span>
+                <span class="upcoming hide">Upcoming</span>
+            </h4>
+            <h2 class="job eng"></h2>
+            <h2 class="job ita hide"></h2>
+            <h3 class="place eng"></h3>
+            <h3 class="place ita"></h3>
+            <p class="collaborators eng"></p>
+            <p class="collaborators ita"></p>
+            <a class="link hide" href="" target="_blank"><img src="images/link.svg" alt="link" class="linkIcon"> see this experience here</a>
         </article>
     </template>
     <template class="exhibition">
         <article>
             <div class="yellowDot dot"></div>
-            <h4 class="date"><span class="startDate"></span> - <span class="endDate "></span></h4>
-            <h2 class="title"></h2>
-            <h3 class="address"></h3>
-            <p class="description"></p>
-            <h4><img src="images/link.svg" alt="link" class="linkIcon"> <span class="link"></span></h4>
+            <h4 class="date">
+                <span class="startDate"></span> - <span class="endDate"></span>
+                <span class="now hide">Now</span>
+                <span class="upcoming hide">Upcoming</span>
+            </h4>
+            <h2 class="title eng"></h2>
+            <h2 class="title ita"></h2>
+            <h3 class="place eng"></h3>
+            <h3 class="place ita"></h3>
+            <p class="piece"></p>
+            <a class="link" href="" target="_blank"><img src="images/link.svg" alt="link" class="linkIcon"> see exhibition here</a>
         </article>
     </template>
     <template class="press">
