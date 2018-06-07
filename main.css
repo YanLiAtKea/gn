@@ -72,9 +72,6 @@ rect, polyline, path {
 }
 
 /* basic elements */
-html {
-    height: 100%; /* avoid the html being only half the page tall. structure issue on about page, need to rewrite that page */
-}
 body:not(#homepage) {
     background: linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%);
     max-width: 100%;
