@@ -76,7 +76,7 @@ html {
     min-height: 120%; /* avoid the html being only half the page tall. structure issue on about page, need to rewrite that page. use min-height cuz on porffolio site html height will be dynamicly changed. more than 100% cuz footer is now set to lower than inherit position. after rewrite the problematic page, footer problem will be solved and no need to set more than 100% */
 }
 body:not(#homepage) {
-    background: linear-gradient(to bottom, #ffffff 0%, #f0f2f5 700px, #ffffff 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70px, #f0f2f5 700px, #ffffff 100%);
     max-width: 100%;
     position: relative;
     height: 100%;

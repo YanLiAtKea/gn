@@ -3,6 +3,8 @@
 }
 body#about {
     padding-top: 70px;
+    height: auto;
+    min-height: 100vh;
 }
 body#about main {
     position: relative;

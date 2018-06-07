@@ -256,7 +256,7 @@ span.share {
         margin-top: 15px;
     }
     div.text {
-        padding: 10px 0 0 0;
+        padding: 0;
         width: auto;
         max-height: 50vw;
         text-align: left;
@@ -352,7 +352,7 @@ span.share {
     }
     .buttons {
         position: absolute;
-        bottom: -35px;
+        bottom: -85px;
     }
     .title {
         grid-row: 1/4;
@@ -371,7 +371,7 @@ span.share {
         width: 13%;
         margin-left: 22%;
         position: relative;
-        top: calc(-5.5 * var(--unit));
+        top: calc(-3 * var(--unit));
     }
     .more {
         display: none;
