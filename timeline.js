@@ -36,7 +36,7 @@ if(typePassed == "experience"){
     fetchTimeline(pressPath, showPress);
     showUnderlineExp();
     setTimeout(filterOnlyExp, 2000);
-    setTimeout(newSort, 2001);
+    setTimeout(newSort, 2050);
 }
 if(typePassed == "exhibition"){
     fetchTimeline(expPath, showExp);
@@ -44,7 +44,7 @@ if(typePassed == "exhibition"){
     fetchTimeline(pressPath, showPress);
     showUnderlineExhi();
     setTimeout(filterOnlyExhi, 2000);
-    setTimeout(newSort, 2001);
+    setTimeout(newSort, 2050);
 }
 if(typePassed == "press"){
     fetchTimeline(expPath, showExp);
@@ -52,7 +52,7 @@ if(typePassed == "press"){
     fetchTimeline(pressPath, showPress);
     showUnderlinePress();
     setTimeout(filterOnlyPress, 2000);
-    setTimeout(newSort, 2001);
+    setTimeout(newSort, 2050);
 }
 if(!typePassed){
     fetchTimeline(expPath, showExp);
@@ -231,6 +231,7 @@ function showAll(){
     document.querySelectorAll('.experience').forEach(e => e.classList.remove('hide'));
     newSort();
     window.scrollTo(top);
+    document.querySelector('footer').style.display = "inherit";
 }
 
 
@@ -295,6 +296,7 @@ function newSort(){
     }
 ///////////////
     document.querySelector('body').style.height = "auto";
+    document.querySelector('footer').style.display = "none";
 }
 function showUnderlineExp(){
     document.querySelector('.allFilter').classList.remove('active');

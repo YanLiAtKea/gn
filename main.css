@@ -202,7 +202,6 @@ nav>* {
     color: var(--light-grey);
 }
 footer {
-    background: white;
     width: 100%;
     height: 50px;
     font-family: Sukhumvit-thin, sans-serif;
@@ -228,13 +227,19 @@ footer>div {
 @media screen and (min-width: 768px){
     /* footer */
     footer {
-        width: 570px;
-        margin: 0 calc(50vw - 290px);
+        width: 600px;
+        margin: 0 calc(50vw - 320px);
     }
     .desktopFooter {
         display: inherit;
     }
-
+    .copyright {
+        font-size: 30px;
+        color: var(--medium-grey);
+        position: relative;
+        top: 8px;
+        margin: 0 5px;
+    }
     footer>div {
         display: inline-block;
         width: auto;
