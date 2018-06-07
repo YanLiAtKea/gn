@@ -7,12 +7,12 @@ function toggleBurgerMenu(){
 }
 
 // drop down menu
-document.querySelector('.timeline').addEventListener('mouseenter', dropDown);
+document.querySelector('div.timeline').addEventListener('mouseenter', dropDown);
 function dropDown(){
     document.querySelector('.subMenu').classList.add('drop-down');
     document.querySelector('header').style.overflow = 'visible';
 }
-document.querySelector('.timeline').addEventListener('mouseleave', pullUp);  // use mouseleave as trigger can cause issues when testing mobile version on computer. on real mobile it's fine, since there is no mouse
+document.querySelector('div.timeline').addEventListener('mouseleave', pullUp);  // use mouseleave as trigger can cause issues when testing mobile version on computer. on real mobile it's fine, since there is no mouse
 function pullUp(){
     document.querySelector('.subMenu').classList.remove('drop-down');
     document.querySelector('header').style.overflow = 'hidden';
