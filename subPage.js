@@ -19,8 +19,10 @@ let languagePassed = Urlpassed.get("lang");
 // back to list
 document.querySelector('.back').addEventListener('click', goBack);
 function goBack(){
-    let originalHref = document.querySelector('.back').parentElement.getAttribute('href');
-    document.querySelector('.back').parentElement.setAttribute('href', originalHref + "?lang=" + languagePassed);
+    console.log('go back');
+    window.history.back();
+//    let originalHref = document.querySelector('.back').parentElement.getAttribute('href');
+//    document.querySelector('.back').parentElement.setAttribute('href', originalHref + "?lang=" + languagePassed);
 }
 
 // if there is no language argument in the URL, set it to english version
@@ -28,7 +30,7 @@ if(!languagePassed){
     languagePassed = "en";
 }
 let id= Urlpassed.get("id");
-let artPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork_' + languagePassed + '/' + id + '?_embed';
+let artPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork/' + id + '?_embed';
 
 fetchArt(artPath);
 
