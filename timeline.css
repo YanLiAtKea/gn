@@ -9,6 +9,7 @@ div.line {
     height: 0;
     top: 150px;
     animation: goDown 2.3s ease-in forwards;
+    z-index: 2;
 }
 @keyframes goDown {
     to {
@@ -112,10 +113,10 @@ article {
     text-decoration: underline;
     line-height: 3em;
 }
-
-@media screen and (min-width: 768px){
+@media screen and (min-width: 800px){
     main.timeline {
         height: 700vh;  /* screen flashed with lower setting, strange...*/
+        overflow-y: hidden;
     }
     div.menu {
         width: 100%;
@@ -126,7 +127,7 @@ article {
     div.line {
         position: fixed;
         top: 150px;
-        left: 40vw;
+        left: 45vw;
     }
     div.menu {
         grid-template-columns: repeat(4, 1fr);
@@ -151,7 +152,7 @@ article {
     }
     @keyframes moveLeft {
         to {
-            right: -33.1vw;
+            right: -38.1vw;
         }
     }
     article.left {
@@ -165,7 +166,7 @@ article {
             left: -20vw;
         }
         to {
-            left: 0;
+            left: 5vw;
         }
     }
     article.left .dot {
@@ -189,7 +190,7 @@ article {
 
         }
     }
-    #timeline-footer {
+    #timeline footer {
         display: none;
     }
 
