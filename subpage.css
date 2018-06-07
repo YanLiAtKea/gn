@@ -1,11 +1,11 @@
 /* loader */
 .loader{
-            z-index: 5;
-            position: relative;
-            background-color: #eeeeee;
-            width: 100vw;
-            height: 100vh;
-        }
+    z-index: 5;
+    position: relative;
+    background-color: #eeeeee;
+    width: 100vw;
+    height: 100vh;
+}
 svg {
     position: absolute;
     left: 0;
@@ -38,20 +38,29 @@ rect, polyline, path {
 
 body#subpage {
     margin: 0;
+    position: relative;
+    padding-top: 70px;
+}
+.gallery img {
+    width: 90%;
+    margin: 0 5% 20px;
 }
 .back {
     font-family: simplifica, sans-serif;
     font-size: 50px;
-    position: relative;
-    top: 10px;
-    left: 5%;
+    top: 15px;
     cursor: pointer;
+}
+.fetched>div {
+    margin-bottom: 20px;
 }
 h3 {
     font-size: 23px;
+    margin-bottom: 20px;
 }
 #subpage input {
     width: 100%;
+    line-height: 20px;
     border: 1px solid lightgrey;
 }
 
@@ -72,7 +81,6 @@ h3 {
 }
 section.subPageS, #subpage aside {
     padding: 0 5%;
-    margin-top: 90px;
 }
 #subpage .inquire {
     font-size: 63px;
@@ -84,8 +92,35 @@ section.subPageS, #subpage aside {
     font-size: 50px;
     font-weight: 100;
 }
+.year-of-creation {
+    font-size: 16px;
+    font-family: Sukhumvit-thin, sans-serif;
+}
+.dimension {
+    font-size: 19px;
+    color: var(--medium-grey);
+    font-family: simplifica, sans-serif;
+}
+.description p, .concept p {
+    color: var(--dark-grey);
+}
+.quote, .personalMex {
+    color: var(--medium-grey);
+}
+.share {
+    font-family: simplifica, sans-serif;
+    margin-right: 20px;
+    font-size: 23px;
+    color: var(--dark-grey);
+}
+.SoMeIcon {
+    width: 50px;
+    margin-right: 5px;
+    opacity: .3;
+}
 #subpage form {
     margin-bottom: 50px;
+    font-family: Sukhumvit-bold, sans-serif;
 }
 
 @media screen and (min-width: 760px){

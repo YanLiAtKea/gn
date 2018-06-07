@@ -8,27 +8,22 @@ function notFetching(){
         loader.classList.add("hide");
     }
 }
-
-
 let main = document.querySelector('main');
 let section = document.querySelector('section');
 // get the language setting in the URL.
 let Urlpassed = new URLSearchParams(window.location.search);
 let languagePassed = Urlpassed.get("lang");
+if(!languagePassed){
+    languagePassed = "en";
+}
 
-// back to list
+// click back button and go back to previous page
 document.querySelector('.back').addEventListener('click', goBack);
 function goBack(){
     console.log('go back');
     window.history.back();
-//    let originalHref = document.querySelector('.back').parentElement.getAttribute('href');
-//    document.querySelector('.back').parentElement.setAttribute('href', originalHref + "?lang=" + languagePassed);
 }
 
-// if there is no language argument in the URL, set it to english version
-if(!languagePassed){
-    languagePassed = "en";
-}
 let id= Urlpassed.get("id");
 let artPath = 'https://onestepfurther.nu/cms/wp-json/wp/v2/artwork/' + id + '?_embed';
 
@@ -41,15 +36,19 @@ function fetchArt() {
 function showArt(a) {
     let mainPicPath = a.acf.image1.sizes.medium;
     // dynamic generate page title using artwork name, plus artist name and type of work, for SEO
-    document.title = a.acf.title_of_artwork + '| Gabriele Nicola | Conceptual Sculpture';
-    section.querySelector('.title').innerHTML = a.acf.title_of_artwork;
-    section.querySelector('.year').textContent = "(" + a.acf.year_of_work + ")"
+    document.title = a.acf.title_of_work_en + '| by Gabriele Nicola | Conceptual Sculpture';
+    section.querySelector('h1.title.eng').innerHTML = a.acf.title_of_work_en;
+    section.querySelector('h1.title.ita').innerHTML = a.acf.title_of_work_it;
+    section.querySelector('.year-of-creation').textContent = "(" + a.acf.year_of_creation + ")"
     section.querySelector('.height').textContent = a.acf.dimension_height;
-    section.querySelector('.length').textContent =
-        a.acf.dimension_length;
+    section.querySelector('.length').textContent = a.acf.dimension_length;
     section.querySelector('.width').textContent = a.acf.dimension_width;
-    section.querySelector('.sculpture').src = mainPicPath;
-   if(a.acf.image2 !== false){
+    section.querySelector('div.description p.eng').innerHTML = a.acf.technical_description_en;
+    section.querySelector('.description p.ita').innerHTML = a.acf.technical_description_it;
+    section.querySelector('div.concept p.eng').innerHTML = a.acf.concept_en;
+    section.querySelector('.concept p.ita').innerHTML = a.acf.concept_it;
+    section.querySelector('div.gallery img.image1').src = a.acf.image1.sizes.large;
+    if(a.acf.image2 !== false){
     let imgThumb = document.createElement('img')
     let divThumb = document.createElement('div')
     let gallery = section.querySelector('.gallery')
@@ -103,8 +102,24 @@ function showArt(a) {
 
         divThumb.appendChild(imgThumb);
         gallery.appendChild(divThumb);
-   }
-    section.querySelector('.des').nextElementSibling.textContent = a.acf.technical_description;
-    section.querySelector('.con').nextElementSibling.innerHTML = a.acf.concept;
-    notFetching()
+    }
+    if(languagePassed == "it"){
+        showOnlyIt();
+    }
+    if(languagePassed == "en"){
+        showOnlyEn();
+    }
+    notFetching();
+}
+
+document.querySelector('.enSet').addEventListener('click', showOnlyEn);
+document.querySelector('.itSet').addEventListener('click', showOnlyIt);
+
+function showOnlyEn(){
+    document.querySelectorAll('.ita').forEach(e => e.classList.add('hide'));
+    document.querySelectorAll('.eng').forEach(e => e.classList.remove('hide'));
+}
+function showOnlyIt(){
+    document.querySelectorAll('.ita').forEach(e => e.classList.remove('hide'));
+    document.querySelectorAll('.eng').forEach(e => e.classList.add('hide'));
 }
