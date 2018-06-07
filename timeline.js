@@ -110,7 +110,7 @@ function showExp(exp) {
         let clone = templateExp.cloneNode(true);
         clone.querySelector('article').classList.add('needSort')
         clone.querySelector('article').classList.add('experience');
-        clone.querySelector('article').setAttribute('date-string', e.acf['end_date']);
+        clone.querySelector('article').setAttribute('date-string', e.acf['start_date']);
         let startDate = e.acf.start_date.substring(6, 8) + " / " + e.acf.start_date.substring(4, 6) + " / " + e.acf.start_date.substring(0, 4);
         let endDate = e.acf.end_date.substring(6, 8) + " / " + e.acf.end_date.substring(4, 6) + " / " + e.acf.end_date.substring(0, 4);
         clone.querySelector('.startDate').textContent = startDate;
@@ -154,7 +154,7 @@ function showExhi(exhi) {
         clone.querySelector('article').classList.add('exhibition');
         // prepare for sorting later
         clone.querySelector('article').classList.add('needSort')
-        clone.querySelector('article').setAttribute('date-string', e.acf.end_date);
+        clone.querySelector('article').setAttribute('date-string', e.acf.start_date);
 
         let startDate = e.acf.start_date.substring(6, 8) + " / " + e.acf.start_date.substring(4, 6) + " / " + e.acf.start_date.substring(0, 4);
         let endDate = e.acf.end_date.substring(6, 8) + " / " + e.acf.end_date.substring(4, 6) + " / " + e.acf.end_date.substring(0, 4)

@@ -104,6 +104,11 @@ h2.title, h2.job {
 article {
     width: 90%;
 }
+.now, .upcoming {
+    font-family: Sukhumvit-old, sans-serif;
+    text-decoration: underline;
+    line-height: 3em;
+}
 
 @media screen and (min-width: 768px){
     main.timeline {
