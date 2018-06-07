@@ -152,7 +152,7 @@ function showExhi(exhi) {
                     let engName = a.acf['title_of_work_en'];
                     let itaName = a.acf['title_of_work_it'];
                     eachPiece.innerHTML = "<p class='eng'>&quot;" + engName + "&quot;</p> <p class='ita'>&quot;" + itaName + "&quot;</p>";
-                    eachPiece.setAttribute('href', "/subpage.html?id="+pieceID);
+                    eachPiece.setAttribute('href', "subpage.html?id="+pieceID);
                     preFilter();
                 }
                 clone.querySelector('p.piece').appendChild(eachPiece);
