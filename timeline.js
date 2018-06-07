@@ -1,5 +1,5 @@
 let fetching;
-
+/*
 function notFetching(){
     fetching = false;
     //loader
@@ -8,7 +8,7 @@ function notFetching(){
         loader.classList.add("hide");
     }
 }
-
+*/
 let templateExp = document.querySelector('template.experiences').content;
 let templateExhi = document.querySelector('template.exhibition').content;
 let templatePress = document.querySelector('template.press').content;

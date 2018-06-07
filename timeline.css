@@ -8,7 +8,7 @@ div.line {
     left: 5.7vw;
     height: 0;
     top: 150px;
-    animation: goDown 2s ease-in forwards;
+    animation: goDown 2.3s ease-in forwards;
 }
 @keyframes goDown {
     to {
