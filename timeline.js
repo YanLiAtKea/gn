@@ -105,10 +105,23 @@ function fetchTimeline(path, show) {
     fetch(path).then(e => e.json()).then(show);
 }
 
+// only show the passed language
+function preFilter(){
+    if(languagePassed == "it"){
+        document.querySelectorAll('.eng').forEach(function(i){i.classList.add('hide')});
+        document.querySelectorAll('.ita').forEach(function(i){i.classList.remove('hide')})
+    }
+    if(languagePassed == "en"){
+        document.querySelectorAll('.eng').forEach(function(i){i.classList.remove('hide')});
+        document.querySelectorAll('.ita').forEach(function(i){i.classList.add('hide')})
+    }
+}
+
 function showExp(exp) {
     exp.forEach((e) => {
         let clone = templateExp.cloneNode(true);
-        clone.querySelector('article').classList.add('needSort')
+        clone.querySelector('article').classList.add('experience');
+        clone.querySelector('article').classList.add('needSort');
         clone.querySelector('article').classList.add('experience');
         clone.querySelector('article').setAttribute('date-string', e.acf['start_date']);
         let startDate = e.acf.start_date.substring(6, 8) + " / " + e.acf.start_date.substring(4, 6) + " / " + e.acf.start_date.substring(0, 4);
@@ -136,17 +149,6 @@ function showExp(exp) {
         preFilter();
     })
     notFetching();
-}
-function preFilter(){
-    // only show the chosen or passed language
-    if(languagePassed == "it"){
-        document.querySelectorAll('.eng').forEach(function(i){i.classList.add('hide')});
-        document.querySelectorAll('.ita').forEach(function(i){i.classList.remove('hide')})
-    }
-    if(languagePassed == "en"){
-        document.querySelectorAll('.eng').forEach(function(i){i.classList.remove('hide')});
-        document.querySelectorAll('.ita').forEach(function(i){i.classList.add('hide')})
-    }
 }
 function showExhi(exhi) {
     exhi.forEach((e) => {
@@ -261,7 +263,9 @@ function showAll(){
     document.querySelectorAll('.press').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.exhibition').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.experience').forEach(e => e.classList.remove('hide'));
+    newSort();
 }
+
 
 // sort all input by date
 function sortAll(){
@@ -291,6 +295,43 @@ function sortAll(){
 }
 setTimeout(sortAll, 2000);
 
+// update sort
+function newSort(){
+    let wrapper = document.querySelector('main.timeline');
+    let neetSortS = document.querySelectorAll('.needSort:not(.hide)');
+    let sortArray = [];
+    neetSortS.forEach(addToArray);
+    function addToArray(s){
+        sortArray.push(s);
+    }
+    sortArray.sort(// sort() gives "in place" result, read more on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+        function (a,b){
+            return b.getAttribute('date-string') - a.getAttribute('date-string');
+        }
+    )
+    for(let i=0; i<sortArray.length; i++){
+        wrapper.appendChild(sortArray[i]);
+    }
+    let sortedEven = document.querySelectorAll('.needSort:not(.hide):nth-of-type(2n)');
+    sortedEven.forEach(updateRight);
+    function updateRight(s){
+        s.classList.remove('left');
+        s.classList.add('right');
+    }
+    let sortedOdd = document.querySelectorAll('.needSort:not(.hide):nth-of-type(2n+1)');
+    sortedOdd.forEach(updateLeft);
+    function updateLeft(s){
+        s.classList.add('left');
+        s.classList.remove('right');
+    }
+///////////////
+    document.querySelector('body').style.height = "auto";
+    document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
+
+}
+
+
+
 
 function showUnderlingExp(){
     document.querySelector('.allFilter').classList.remove('active');
@@ -302,6 +343,7 @@ function filterOnlyExp(){
     document.querySelectorAll('.experience').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.press').forEach(e => e.classList.add('hide'));
     document.querySelectorAll('.exhibition').forEach(e => e.classList.add('hide'));
+    newSort();
 }
 
 function showUnderlingExhi(){
@@ -314,6 +356,7 @@ function filterOnlyExhi(){
     document.querySelectorAll('.exhibition').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.press').forEach(e => e.classList.add('hide'));
     document.querySelectorAll('.experience').forEach(e => e.classList.add('hide'));
+    newSort();
 }
 
 function showUnderlingPress(){
@@ -326,4 +369,5 @@ function filterOnlyPress(){
     document.querySelectorAll('.press').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.exhibition').forEach(e => e.classList.add('hide'));
     document.querySelectorAll('.experience').forEach(e => e.classList.add('hide'));
+    newSort();
 }
