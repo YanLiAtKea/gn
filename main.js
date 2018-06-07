@@ -104,13 +104,16 @@ let types = document.querySelectorAll('.subMenu>a');
 types[0].addEventListener('click', types[0].setAttribute('type', 'experience'));
 types[1].addEventListener('click', types[1].setAttribute('type', 'exhibition'));
 types[2].addEventListener('click', types[2].setAttribute('type', 'press'));
+types[3].addEventListener('click', types[3].setAttribute('type', 'all'));
 types.forEach(chooseType);
 function chooseType(t){
-    t.addEventListener('click', updateURL);
-    function updateURL(){
-        let oldHref = t.getAttribute('href');
-        let newHref;
-        newHref = oldHref + '&type=' + t.getAttribute('type');
-        t.setAttribute('href', newHref);
+    if(t.getAttribute('type') !=="all"){
+        t.addEventListener('click', updateURL);
+        function updateURL(){
+            let oldHref = t.getAttribute('href');
+            let newHref;
+            newHref = oldHref + '&type=' + t.getAttribute('type');
+            t.setAttribute('href', newHref);
+        }
     }
 }
