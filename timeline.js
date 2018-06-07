@@ -10,9 +10,11 @@ function notFetching(){
 }
 */
 
-// restrict click on filter before fetching is complete, release when sort is finished
+// restrict click on filter or change language before fetching is complete, release when sort is finished
 let filters = document.querySelectorAll('.menu>div');
 filters.forEach(e => e.style.pointerEvents = "none");
+let lanButtons = document.querySelectorAll('.lan>button');
+lanButtons.forEach(e => e.style.pointerEvents = "none");
 
 let templateExp = document.querySelector('template.experiences').content;
 let templateExhi = document.querySelector('template.exhibition').content;
@@ -260,7 +262,7 @@ function sortAll(){
 //    document.querySelector('body').style.background = "linear-gradient(to bottom, #ffffff 0%, #f0f2f5 30%, #ffffff 100%)";
     // after sorting, allow click on filters again
     filters.forEach(e => e.style.pointerEvents = "auto");
-
+    lanButtons.forEach(e => e.style.pointerEvents = "auto");
 }
 setTimeout(sortAll, 2000); // temp solution, should check state of fetching
 
