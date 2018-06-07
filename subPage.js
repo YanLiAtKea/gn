@@ -116,10 +116,14 @@ document.querySelector('.enSet').addEventListener('click', showOnlyEn);
 document.querySelector('.itSet').addEventListener('click', showOnlyIt);
 
 function showOnlyEn(){
+    document.querySelector('.enSet').className = "enSet lanactive";
+    document.querySelector('.itSet').className = "itSet";
     document.querySelectorAll('.ita').forEach(e => e.classList.add('hide'));
     document.querySelectorAll('.eng').forEach(e => e.classList.remove('hide'));
 }
 function showOnlyIt(){
+    document.querySelector('.itSet').className = "itSet lanactive";
+    document.querySelector('.enSet').className = "enSet";
     document.querySelectorAll('.ita').forEach(e => e.classList.remove('hide'));
     document.querySelectorAll('.eng').forEach(e => e.classList.add('hide'));
 }

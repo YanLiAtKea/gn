@@ -159,7 +159,7 @@ function showExhi(exhi) {
                     let engName = a.acf['title_of_work_en'];
                     let itaName = a.acf['title_of_work_it'];
                     eachPiece.innerHTML = "<p class='eng'>&quot;" + engName + "&quot;</p> <p class='ita'>&quot;" + itaName + "&quot;</p>";
-                    eachPiece.setAttribute('href', "subpage.html?id="+pieceID);
+                    eachPiece.setAttribute('href', "subpage.html?id="+ pieceID + "&lang=" + languagePassed); // languagePassed might not be the current lang setting, since user can click on lang buttons to change lang and this won't update the url/languagePassed
                     preFilter();
                 }
                 clone.querySelector('p.piece').appendChild(eachPiece);
@@ -169,7 +169,6 @@ function showExhi(exhi) {
         preFilter();
     })
 }
-
 function showPress(press) {
     press.forEach((e) => {
         let clone = templatePress.cloneNode(true);
@@ -189,7 +188,7 @@ function showPress(press) {
         main.appendChild(clone);
     })
 }
-
+console.log(languagePassed);
 // only show the passed language
 function preFilter(){
     if(languagePassed == "it"){
