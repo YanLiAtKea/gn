@@ -107,7 +107,7 @@ function showExp(exp) {
         main.appendChild(clone);
         preFilter();
     })
-    notFetching();
+//    notFetching();
 }
 function showExhi(exhi) {
     exhi.forEach((e) => {
