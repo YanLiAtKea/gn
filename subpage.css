@@ -130,7 +130,7 @@ section.subPageS, #subpage aside {
 }
 @media screen and (min-width: 768px){
     .fetched {
-        width: 60%;
+        width: 66%;
         position: relative;
     }
     .fetched>div.buttons {
@@ -150,8 +150,8 @@ section.subPageS, #subpage aside {
         top: 19px;
     }
     .gallery img {
-        width: 100%;
-        margin: 20px 0;
+        width: 60%;
+        margin: 20px 20%;
     }
     .centerMe {
         margin: 0;
@@ -181,3 +181,13 @@ section.subPageS, #subpage aside {
     }
 }
 
+@media screen and (min-width: 1024px){
+    body#subpage a#navHome {
+        left: auto;
+        right: 0;
+    }
+    body#subpage .lan {
+        right: 14vw;
+        top: 30px;
+    }
+}
