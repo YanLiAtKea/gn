@@ -416,7 +416,7 @@ span.share, div.buttons {
         z-index: 5;
         display: none; /* change to display grid with JS */
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 3fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 3fr;
         grid-gap: 4vw;
     }
     .extra-closeMe {
@@ -436,24 +436,28 @@ span.share, div.buttons {
     }
     .concept-modal {
         line-height: 2em;
-        width: 83%;
+        width: 90%;
         text-align: justify;
         text-justify: inter-character;
     }
     .concept-modal p {
         margin-top: 2em;
     }
-    .where-is-piece {
+    .included-in-exhi {
         grid-column: 2/-1;
         grid-row: 2/3;
     }
-    .review {
+    .where-is-piece {
         grid-column: 2/-1;
         grid-row: 3/4;
     }
-    .by-whom {
+    .review {
         grid-column: 2/-1;
         grid-row: 4/5;
+    }
+    .by-whom {
+        grid-column: 2/-1;
+        grid-row: 5/-1;
     }
     .quot-mark {
         font-size: 30px;

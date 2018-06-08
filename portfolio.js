@@ -65,7 +65,7 @@ function showArts(arts){
         clone.querySelector('.concept p.eng').innerHTML = eachArt.acf['concept_en'];
         clone.querySelector('.concept p.ita').innerHTML = eachArt.acf['concept_it'];
         let extraInfo = false;
-        if(eachArt.acf['location_of_artwork_en'] || eachArt.acf['easter_egg_text'] || eachArt.acf['easter_egg_audio'] || eachArt.acf['included_in_which exhibition'] || eachArt.acf['expert_comment_on_piece']){
+        if(eachArt.acf['location_of_artwork_en'] || eachArt.acf['included_in_which_exhibition'] || eachArt.acf['easter_egg_text'] || eachArt.acf['easter_egg_audio'] || eachArt.acf['included_in_which exhibition'] || eachArt.acf['expert_comment_on_piece']){
             extraInfo = true;
         }
         // if concept is too long or if there's other info, show read more
@@ -76,8 +76,17 @@ function showArts(arts){
         clone.querySelector('.concept-modal p').innerHTML = clone.querySelector('.concept p:not(.hide)').innerHTML;
         // get the extra info if available
         if(eachArt.acf['location_of_artwork_en'] ){
-            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "currently at: " + eachArt.acf['location_of_artwork_en'];
+            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "- currently at: " + eachArt.acf['location_of_artwork_en'];
         }
+        if(eachArt.acf['included_in_which_exhibition']){
+            clone.querySelector('.included-in-exhi').classList.remove('hide');
+            eachArt.acf['included_in_which_exhibition'].forEach(getEachExhi);
+            function getEachExhi(ex){
+                let p = document.createElement('p');
+                p.innerHTML = "'" + ex['post_name'] + "'";
+                clone.querySelector('.included-in-exhi').appendChild(p);
+            }
+                    }
         if(eachArt.acf['expert_comment_on_piece']){
             clone.querySelector('.extra-modal .review p').innerHTML = "<span class='quot-mark'>&quot;</span>" + eachArt.acf['expert_comment_on_piece'] + "&quot;";
         }
