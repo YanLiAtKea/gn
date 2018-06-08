@@ -45,6 +45,7 @@ img.arrow {
     margin-bottom: 5em;
 }
 body#portfolio section {
+    margin-bottom: 20px;
     display: grid;
     grid-row-gap: 0;
 }
@@ -60,7 +61,7 @@ section h1 {
     font-family: simplifica, sans-serif;
 }
 .curve img {
-    width: 18%;
+    width: 14%;
     margin-left: 43%;
 }
 button.inquire {
@@ -231,7 +232,7 @@ span.share, div.buttons {
         cursor: pointer;
     }
     .curve img {
-        margin-left: 67%;
+        margin-left: 70%;
     }
 
 }
@@ -368,9 +369,9 @@ span.share, div.buttons {
     }
     .curve img {
         width: 13%;
-        margin-left: 43%;
+        margin-left: 52%;
         position: relative;
-        top: calc(-4.5 * var(--unit));
+        top: calc(-2.5 * var(--unit));
     }
     .more {
         display: none;
