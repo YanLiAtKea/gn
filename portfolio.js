@@ -76,7 +76,7 @@ function showArts(arts){
         clone.querySelector('.concept-modal p').innerHTML = clone.querySelector('.concept p:not(.hide)').innerHTML;
         // get the extra info if available
         if(eachArt.acf['location_of_artwork_en'] ){
-            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "currently at: " + eachArt.acf['location_of_artwork_en'];
+            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "- currently at: " + eachArt.acf['location_of_artwork_en'];
         }
         if(eachArt.acf['included_in_which_exhibition']){
             clone.querySelector('.included-in-exhi').classList.remove('hide');
@@ -91,7 +91,7 @@ function showArts(arts){
             clone.querySelector('.extra-modal .review p').innerHTML = "<span class='quot-mark'>&quot;</span>" + eachArt.acf['expert_comment_on_piece'] + "&quot;";
         }
         if(eachArt.acf['which_expert']){
-            clone.querySelector('.extra-modal .by-whom p').innerHTML = "by: " + eachArt.acf['which_expert'];
+            clone.querySelector('.extra-modal .by-whom p').innerHTML = " by: " + eachArt.acf['which_expert'];
         }
         if(eachArt.acf['easter_egg_text']){
             clone.querySelector('.extra-modal .easter-egg p').innerHTML = eachArt.acf['easter_egg_text'];
@@ -297,14 +297,47 @@ function showArts(arts){
     document.querySelector('body').style.height = "auto";
 
     // open / close extra modal
+    let extraModalTimer;
     document.querySelectorAll('p.read-more').forEach(function(rm){rm.addEventListener('click', openExtraModal)});
-    function openExtraModal(){
+    let timerInterval;
+    function openExtraModal(e){
         this.parentElement.parentElement.parentElement.querySelector('.extra-modal').style.display = "grid";
+        // run timer if there is an easter egg to switch to
+        if(this.parentElement.parentElement.parentElement.querySelector('.extra-modal .easter-egg p').textContent !== ""){
+            // set timer on showing extra modal
+            extraModalTimer = 0;
+            timerInterval = setInterval(timerRun, 1000);
+            function timerRun(){
+                extraModalTimer++;
+                console.log(extraModalTimer);
+                if(extraModalTimer > 10){
+                    clearInterval(timerInterval);
+                    e.target.parentElement.parentElement.parentElement.querySelector('.extra-modal .concept-modal').classList.add('hide');
+                    e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg').style.display = "inherit";
+                    if(e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').src){
+                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').play();
+                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').playbackRate = .95;
+                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').loop = true;
+                    }
+                }
+            }
+        }
     }
     document.querySelectorAll('.extra-closeMe').forEach(function(ec){ec.addEventListener('click', closeExtraModal)});
     function closeExtraModal(){
         this.parentElement.style.display = "none";
+        this.parentElement.querySelector('.concept-modal').classList.remove('hide');
+        this.parentElement.querySelector('.concept-modal').classList.add('fade-out');
+        this.parentElement.querySelector('.easter-egg').style.display = "none";
+        this.parentElement.querySelector('#easter-egg').pause();
+        this.parentElement.querySelector('#easter-egg').currentTime = 0; // go back to the beginning of the audio. don't resume
+
+        clearInterval(timerInterval);
     }
+
+    // hide concept and show easter egg text
+
+
 }
 
 function loadMore() {

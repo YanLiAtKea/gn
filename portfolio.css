@@ -423,7 +423,8 @@ span.share, div.buttons {
         font-size: 30px;
         font-family: simplifica, sans-serif;
         position: absolute;
-        right: 0;
+        top: -30px;
+        right: -30px;
         grid-row: 1/2;
         grid-column: 2/3;
         cursor: pointer;
@@ -445,19 +446,19 @@ span.share, div.buttons {
     }
     .included-in-exhi {
         grid-column: 2/-1;
-        grid-row: 2/3;
+        grid-row: 1/2;
     }
     .where-is-piece {
         grid-column: 2/-1;
-        grid-row: 3/4;
+        grid-row: 2/3;
     }
     .review {
         grid-column: 2/-1;
-        grid-row: 4/5;
+        grid-row: 3/4;
     }
     .by-whom {
         grid-column: 2/-1;
-        grid-row: 5/-1;
+        grid-row: 4/5;
     }
     .quot-mark {
         font-size: 30px;
@@ -468,6 +469,15 @@ span.share, div.buttons {
     }
     .easter-egg {
         display: none;
+    }
+    .easter-egg p {
+        font-size: 19px;
+        animation: moveUp 40s linear forwards;
+    }
+    @keyframes moveUp {
+        to {
+            transform: translateY(-400px); /* temp, need to check how long is the poem */
+        }
     }
     /* slideshow */
     .slideshow {
