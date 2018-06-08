@@ -183,6 +183,6 @@ h1.name {
     }
     body#about footer {
         position: absolute;
-        bottom: -230px;
+        bottom: 0;
     }
 }
