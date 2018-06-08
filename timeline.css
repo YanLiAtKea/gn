@@ -114,6 +114,10 @@ article {
     text-decoration: underline;
     line-height: 3em;
 }
+#timeline footer {
+    display: none;
+}
+
 @media screen and (min-width: 800px){
     main.timeline {
         height: 700vh;  /* screen flashed with lower setting, strange...*/
@@ -190,8 +194,5 @@ article {
             margin-left: 1.5vw;
 
         }
-    }
-    #timeline footer {
-        display: none;
     }
 }
