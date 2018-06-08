@@ -64,6 +64,33 @@ function showArts(arts){
         clone.querySelector('.description p.ita').innerHTML = eachArt.acf['technical_description_it'];
         clone.querySelector('.concept p.eng').innerHTML = eachArt.acf['concept_en'];
         clone.querySelector('.concept p.ita').innerHTML = eachArt.acf['concept_it'];
+        let extraInfo = false;
+        if(eachArt.acf['location_of_artwork_en'] || eachArt.acf['easter_egg_text'] || eachArt.acf['easter_egg_audio'] || eachArt.acf['included_in_which exhibition'] || eachArt.acf['expert_comment_on_piece']){
+            extraInfo = true;
+        }
+        // if concept is too long or if there's other info, show read more
+        if(eachArt.acf['concept_en'].length>325 || extraInfo == true){
+            clone.querySelector('.dotdotdot').style.display = "inherit";
+            clone.querySelector('.read-more').style.display = "inherit";
+        }
+        clone.querySelector('.concept-modal p').innerHTML = clone.querySelector('.concept p:not(.hide)').innerHTML;
+        // get the extra info if available
+        if(eachArt.acf['location_of_artwork_en'] ){
+            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "currently at: " + eachArt.acf['location_of_artwork_en'];
+        }
+        if(eachArt.acf['expert_comment_on_piece']){
+            clone.querySelector('.extra-modal .review p').innerHTML = "<span class='quot-mark'>&quot;</span>" + eachArt.acf['expert_comment_on_piece'] + "&quot;";
+        }
+        if(eachArt.acf['which_expert']){
+            clone.querySelector('.extra-modal .by-whom p').innerHTML = "by: " + eachArt.acf['which_expert'];
+        }
+        if(eachArt.acf['easter_egg_text']){
+            clone.querySelector('.extra-modal .easter-egg p').innerHTML = eachArt.acf['easter_egg_text'];
+        }
+        if(eachArt.acf['easter_egg_audio']){
+            clone.querySelector('audio#easter-egg').src = eachArt.acf['easter_egg_audio'].url;
+        }
+
         clone.querySelector('.big-image img').src = largeImagePath;
         clone.querySelector('.big-image img').alt = "artwork from Gabriele Nicola: '" + eachArt.acf.title_of_work_en + "'";
         clone.querySelector('.big-image img').classList.add(eachArt.acf["orientation_image1"]);
@@ -189,7 +216,7 @@ function showArts(arts){
     })
 
     // click on inquire button
-    document.querySelectorAll('button.inquire').forEach(function(c){c.addEventListener('click', showForm)})
+    document.querySelectorAll('button.inquire').forEach(function(c){c.addEventListener('click', showForm)});
     function showForm(){
         document.querySelector('.inquire-form').className = "inquire-form show";
     }
@@ -259,6 +286,16 @@ function showArts(arts){
     lookingForData = false;
     notFetching();
     document.querySelector('body').style.height = "auto";
+
+    // open / close extra modal
+    document.querySelectorAll('p.read-more').forEach(function(rm){rm.addEventListener('click', openExtraModal)});
+    function openExtraModal(){
+        this.parentElement.parentElement.parentElement.querySelector('.extra-modal').style.display = "grid";
+    }
+    document.querySelectorAll('.extra-closeMe').forEach(function(ec){ec.addEventListener('click', closeExtraModal)});
+    function closeExtraModal(){
+        this.parentElement.style.display = "none";
+    }
 }
 
 function loadMore() {
@@ -279,3 +316,4 @@ function bottomVisible() {
     const bottomOfPage = visible + scrollY >= pageHeight
     return bottomOfPage || pageHeight < visible;
 }
+
