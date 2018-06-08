@@ -15,6 +15,7 @@ body#about main {
 }
 img.play {
     width: 50px;
+    opacity: .4;
     position: absolute;
     left: 8vw;
     top: 30vw;
