@@ -413,7 +413,7 @@ span.share, div.buttons {
         top: 90px;
         left: 9.9vw;
         padding: 5vw 10vw;
-        background: white;
+        background: rgba(255,255,255, .95);
         z-index: 5;
         display: none; /* change to display grid with JS */
         grid-template-columns: 1fr 1fr;
@@ -421,7 +421,7 @@ span.share, div.buttons {
         grid-gap: 4vw;
     }
     .extra-closeMe {
-        font-size: 30px;
+        font-size: 50px;
         font-family: simplifica, sans-serif;
         position: absolute;
         top: -30px;
