@@ -250,6 +250,9 @@ footer>div {
 }
 
 @media screen and (min-width: 1024px){
+    .logo {
+        width: 67px;
+    }
     header {
         overflow: hidden;
     }
