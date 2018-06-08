@@ -386,6 +386,13 @@ span.share, div.buttons {
         background: rgba(255,255,255,.9);
         z-index: 3;
     }
+    .sign {
+        width: 50%;
+        padding: 120px 10px 120px 20px;
+    }
+    .closeMe {
+        right: 70px;
+    }
     .inquire-form {
         height: 83vh;
         width: 100vw;
