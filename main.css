@@ -154,6 +154,7 @@ a#navHome {
     position: fixed;
     right: calc(5vw + 100px);
     top: 20px;
+    font-family: simplifica, sans-serif;
 }
 
 .lan button {
