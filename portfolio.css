@@ -476,6 +476,9 @@ span.share, div.buttons {
         animation: moveUp 40s linear forwards;
     }
     @keyframes moveUp {
+        5% {
+            transform: translateY(0);
+        }
         to {
             transform: translateY(-400px); /* temp, need to check how long is the poem */
         }
