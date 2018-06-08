@@ -68,22 +68,22 @@ function showArts(arts){
         if(eachArt.acf['location_of_artwork_en'] || eachArt.acf['included_in_which_exhibition'] || eachArt.acf['easter_egg_text'] || eachArt.acf['easter_egg_audio'] || eachArt.acf['included_in_which exhibition'] || eachArt.acf['expert_comment_on_piece']){
             extraInfo = true;
         }
-        // if concept is too long or if there's other info, show read more
-        if(eachArt.acf['concept_en'].length>325 || extraInfo == true){
+        // if concept is too long or if there's other info, show read more (only do this when in desktop mode for now, so detect window width as well)
+        if((eachArt.acf['concept_en'].length>325 || extraInfo == true) && window.innerWidth >1200){
             clone.querySelector('.dotdotdot').style.display = "inherit";
             clone.querySelector('.read-more').style.display = "inherit";
         }
         clone.querySelector('.concept-modal p').innerHTML = clone.querySelector('.concept p:not(.hide)').innerHTML;
         // get the extra info if available
         if(eachArt.acf['location_of_artwork_en'] ){
-            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "- currently at: " + eachArt.acf['location_of_artwork_en'];
+            clone.querySelector('.extra-modal .where-is-piece p').innerHTML = "currently at: " + eachArt.acf['location_of_artwork_en'];
         }
         if(eachArt.acf['included_in_which_exhibition']){
             clone.querySelector('.included-in-exhi').classList.remove('hide');
             eachArt.acf['included_in_which_exhibition'].forEach(getEachExhi);
             function getEachExhi(ex){
                 let p = document.createElement('p');
-                p.innerHTML = "'" + ex['post_name'] + "'";
+                p.innerHTML = "'" + ex['post_name'] + "'"; // this is the post name not the actual exhibition name, need to use the post ID to fetch the title of the exhibition
                 clone.querySelector('.included-in-exhi').appendChild(p);
             }
                     }
