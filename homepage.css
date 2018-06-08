@@ -130,7 +130,7 @@ img.homepage {
         left: 21vw;
     }
     .captionHome {
-        bottom: .5vw;
+        bottom: 0;
         left: 3%;
     }
     div.captionHome h4 {
