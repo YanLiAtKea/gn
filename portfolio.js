@@ -65,7 +65,7 @@ function showArts(arts){
         clone.querySelector('.concept p.eng').innerHTML = eachArt.acf['concept_en'];
         clone.querySelector('.concept p.ita').innerHTML = eachArt.acf['concept_it'];
         clone.querySelector('.big-image img').src = largeImagePath;
-        clone.querySelector('.big-image img').alt = eachArt.acf['title_of_artwork'];
+        clone.querySelector('.big-image img').alt = "artwork from Gabriele Nicola " + eachArt.acf['title_of_artwork'];
         clone.querySelector('.big-image img').classList.add(eachArt.acf["orientation_image1"]);
         // check to see if the large image is in horizontal or vertical format, need this to choose layout for all images
         let largeImageOrientation = eachArt.acf["orientation_image1"];
@@ -78,7 +78,7 @@ function showArts(arts){
         let thumbnailWrapper = clone.querySelector('.small-images');
         if(eachArt.acf.image2 !== false){
             clone.querySelector('.thumbnail:nth-of-type(1) img').src = eachArt.acf.image2.sizes.large;
-            clone.querySelector('.thumbnail:nth-of-type(1) img').alt = eachArt.acf.title_of_artwork;
+            clone.querySelector('.thumbnail:nth-of-type(1) img').alt = "artwork from Gabriele Nicola " + eachArt.acf.title_of_artwork;
             clone.querySelector('.thumbnail:nth-of-type(1) img').classList.add(eachArt.acf["orientation_image2"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot1'></div>";
@@ -86,7 +86,7 @@ function showArts(arts){
         }
         if(eachArt.acf.image3 !== false){
             clone.querySelector('.thumbnail:nth-of-type(2) img').src = eachArt.acf.image3.sizes.large;
-            clone.querySelector('.thumbnail:nth-of-type(2) img').alt = eachArt.acf.title_of_artwork;
+            clone.querySelector('.thumbnail:nth-of-type(2) img').alt = "artwork from Gabriele Nicola " + eachArt.acf.title_of_artwork;
             clone.querySelector('.thumbnail:nth-of-type(2) img').classList.add(eachArt.acf["orientation_image3"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot2'></div>";
@@ -94,7 +94,7 @@ function showArts(arts){
         }
         if(eachArt.acf.image4 !== false){
             clone.querySelector('.thumbnail:nth-of-type(3) img').src = eachArt.acf.image4.sizes.large;
-            clone.querySelector('.thumbnail:nth-of-type(3) img').alt = eachArt.acf.title_of_artwork;
+            clone.querySelector('.thumbnail:nth-of-type(3) img').alt = "artwork from Gabriele Nicola " + eachArt.acf.title_of_artwork;
             clone.querySelector('.thumbnail:nth-of-type(3) img').classList.add(eachArt.acf["orientation_image4"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot3'></div>";
@@ -102,7 +102,7 @@ function showArts(arts){
         }
         if(eachArt.acf.image5 !== false){
             clone.querySelector('.thumbnail:nth-of-type(4) img').src = eachArt.acf.image5.sizes.large;
-            clone.querySelector('.thumbnail:nth-of-type(4) img').alt = eachArt.acf.title_of_artwork;
+            clone.querySelector('.thumbnail:nth-of-type(4) img').alt = "artwork from Gabriele Nicola " + eachArt.acf.title_of_artwork;
             clone.querySelector('.thumbnail:nth-of-type(4) img').classList.add(eachArt.acf["orientation_image5"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot4'></div>";
@@ -110,7 +110,7 @@ function showArts(arts){
         }
         if(eachArt.acf.image6 !== false){
             clone.querySelector('.thumbnail:nth-of-type(5) img').src = eachArt.acf.image6.sizes.large;
-            clone.querySelector('.thumbnail:nth-of-type(5) img').alt = eachArt.acf.title_of_artwork;
+            clone.querySelector('.thumbnail:nth-of-type(5) img').alt = "artwork from Gabriele Nicola " + eachArt.acf.title_of_artwork;
             clone.querySelector('.thumbnail:nth-of-type(5) img').classList.add(eachArt.acf["orientation_image6"]);
             let newDot = document.createElement('div');
             newDot.innerHTML = "<div class='slide-dot slide-dot-new slidedot5'></div>";
