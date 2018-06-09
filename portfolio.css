@@ -485,11 +485,11 @@ span.share, div.buttons {
     }
     /* slideshow */
     .slideshow {
-        width: calc(120vh - 120px);
-        height: calc(90vh - 90px);
+        width: calc(124vh - 120px);
+        height: calc(93vh - 90px);
         position: fixed;
-        top: 90px;
-        margin-left: calc(50vw - 60vh);
+        top: 70px;
+        margin-left: calc(50vw - 62vh + 50px);
         z-index: 4;
         overflow-y: scroll;
         cursor: ns-resize;
