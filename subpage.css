@@ -141,13 +141,16 @@ section.subPageS, #subpage aside {
     }
     #subpage .inquire {
         display: inline;
-        width: 170px;
+        width: 130px;
         border: 1px solid var(--medium-grey);
         border-radius: 2px;
         font-size: 23px;
         line-height: 50px;
         margin-right: 20px;
         cursor: pointer;
+    }
+    .share {
+        margin-right: 10px;
     }
     .SoMeIcon {
         position: relative;
