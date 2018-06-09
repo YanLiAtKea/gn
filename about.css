@@ -118,8 +118,8 @@ h1.name {
     }
     .stop {
         font-size: 50px;
-        right: 2vw;
-        top: 0;
+        right: 10vw;
+        top: 3vw;
     }
     .bio {
         width: 76%;
@@ -156,6 +156,11 @@ h1.name {
         position: absolute;
         top: 4vw;
         left: -7vw;
+    }
+    .stop {
+        font-size: 40px;
+        right: 2vw;
+        top: 0;
     }
     .bio {
         width: 35vw;
