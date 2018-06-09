@@ -194,4 +194,22 @@ section.subPageS, #subpage aside {
         right: 14vw;
         top: 30px;
     }
+    section.subPageS {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        grid-column-gap: 2vw;
+    }
+    .fetched {
+        width: 100%;
+        padding: 20px 0 0 10%;
+    }
+    .gallery {
+        height: calc(100vh - 140px);
+        overflow: scroll;
+        cursor: ns-resize;
+    }
+    .gallery img {
+        width: 80%;
+        margin-left: 10%;
+    }
 }
