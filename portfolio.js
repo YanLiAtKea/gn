@@ -97,7 +97,7 @@ function showArts(arts){
             clone.querySelector('.extra-modal .easter-egg p').innerHTML = eachArt.acf['easter_egg_text'];
         }
         if(eachArt.acf['easter_egg_audio']){
-            clone.querySelector('audio#easter-egg').src = eachArt.acf['easter_egg_audio'].url;
+            clone.querySelector('audio.easter-egg-audio').src = eachArt.acf['easter_egg_audio'].url;
         }
 
         clone.querySelector('.big-image img').src = largeImagePath;
@@ -314,10 +314,10 @@ function showArts(arts){
                     clearInterval(timerInterval);
                     e.target.parentElement.parentElement.parentElement.querySelector('.extra-modal .concept-modal').classList.add('hide');
                     e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg').style.display = "inherit";
-                    if(e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').src){
-                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').play();
-                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').playbackRate = .95;
-                        e.target.parentElement.parentElement.parentElement.querySelector('#easter-egg').loop = true;
+                    if(e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg-audio').src){
+                        e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg-audio').play();
+                        e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg-audio').playbackRate = .95;
+                        e.target.parentElement.parentElement.parentElement.querySelector('.easter-egg-audio').loop = true;
                     }
                 }
             }
@@ -329,8 +329,8 @@ function showArts(arts){
         this.parentElement.querySelector('.concept-modal').classList.remove('hide');
         this.parentElement.querySelector('.concept-modal').classList.add('fade-out');
         this.parentElement.querySelector('.easter-egg').style.display = "none";
-        this.parentElement.querySelector('#easter-egg').pause();
-        this.parentElement.querySelector('#easter-egg').currentTime = 0; // go back to the beginning of the audio. don't resume
+        this.parentElement.querySelector('.easter-egg-audio').pause();
+        this.parentElement.querySelector('.easter-egg-audio').currentTime = 0; // go back to the beginning of the audio. don't resume
 
         clearInterval(timerInterval);
     }
