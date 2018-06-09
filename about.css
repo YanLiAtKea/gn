@@ -51,10 +51,8 @@ img.play {
 iframe {
     width: 100vw;
     height: 56.25vw;
-    max-width: 560px;
-    max-height: 315px;
     position: absolute;
-    top: 9vw;
+    top: 17vw;
     border: none;
     opacity: 0;
     pointer-events: none;
@@ -112,26 +110,16 @@ h1.name {
     width: 100%;
 }
 
-/* for the video*/
-@media screen and (min-width: 560px){
-    iframe {
-        width: 560px;
-        height: 315px;
-        position: absolute;
-        top: 9vw;
-        left: calc(50vw - 280px);
-        border: none;
-    }
-    .stop {
-        top: 25px;
-    }
-}
-
 @media screen and (min-width: 768px){
     iframe {
         width: 80vw;
         height: 45vw;
-        margin-left: 0;
+        margin-left: 10vw;
+    }
+    .stop {
+        font-size: 50px;
+        right: 2vw;
+        top: 0;
     }
     .bio {
         width: 76%;
@@ -162,20 +150,18 @@ h1.name {
         left: 4vw;
         top: 14vw;
     }
-    .stop {
-        right: 0;
-        top: 0;
-    }
     iframe {
+        width: 43.2vw;
+        height: 24.3vw;
         position: absolute;
-        top: 36px;
-        left: calc(26vw - 280px);
+        top: 4vw;
+        left: -7vw;
     }
     .bio {
         width: 35vw;
         position: absolute;
         top: 0;
-        right: 7vw;
+        right: 8vw;
         padding: 3vw 0 0 0;
     }
     div.address, div.email {
